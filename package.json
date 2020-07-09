@@ -14,7 +14,10 @@
     "react-scripts": "3.4.1",
     "terra-base": "^5.36.0",
     "terra-button": "^3.43.0",
-    "terra-tag": "^2.36.0"
+    "terra-card": "^3.32.0",
+    "terra-grid": "^6.22.0",
+    "terra-tag": "^2.36.0",
+    "terra-time-input": "^4.29.0"
   },
   "scripts": {
     "aggregate-translations": "tt-aggregate-translations -b ./ -d ./src/**/translations -d ./translations -o ./node_modules/terra-i18n/node_modules -f es6",
