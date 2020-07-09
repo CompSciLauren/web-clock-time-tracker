@@ -1,5 +1,4 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { useState } from "react";
 import Button from "terra-button";
 import CollapsibleMenuView from "terra-collapsible-menu-view";
 import Card from "terra-card";
@@ -9,7 +8,35 @@ import TimeCodeProject from "./TimeCodeProject";
 import "../../styles/ViewTimeCodes.css";
 import Select from "terra-form-select";
 
-const ViewTimeCodes = (props) => {
+const ViewTimeCodes = () => {
+  const [inputTimeCodeValue, setInputTimeCodeValue] = useState("");
+  const [inputProjectTitleValue, setInputProjectTitleValue] = useState("");
+  const [inputStatusValue, setInputStatusValue] = useState("notStarted");
+
+  const setState = (anObject) => {
+    if (anObject.hasOwnProperty("inputTimeCodeValue")) {
+      setInputTimeCodeValue(anObject.inputTimeCodeValue);
+    } else if (anObject.hasOwnProperty("inputProjectTitleValue")) {
+      setInputProjectTitleValue(anObject.inputProjectTitleValue);
+    } else if (anObject.hasOwnProperty("inputStatusValue")) {
+      setInputStatusValue(anObject.inputStatusValue);
+    } else {
+      console.log("Error, not an option. Got:", anObject);
+    }
+  };
+
+  const setTimeCodeValue = (value) => {
+    setState({ inputTimeCodeValue: value.target.value });
+  };
+
+  const setProjectTitleValue = (value) => {
+    setState({ inputProjectTitleValue: value.target.value });
+  };
+
+  const setStatusValue = (value) => {
+    setState({ inputStatusValue: value });
+  };
+
   return (
     <Card variant="default" style={{ maxWidth: "40vw", margin: "auto" }}>
       <div className="my-time-codes-container">
@@ -33,20 +60,25 @@ const ViewTimeCodes = (props) => {
         />
         <div className="my-time-codes-item">
           <InputField
+            label="Time Code"
             inputId="inputTimeCode"
             maxWidth="140px"
             placeholder="10203704"
+            onChange={setTimeCodeValue}
           />
           <InputField
+            label="Project Title"
             inputId="inputProjectTitle"
             maxWidth="140px"
             placeholder="My Project"
+            onChange={setProjectTitleValue}
           />
           <Select
             variant="default"
             defaultValue="notStarted"
             required={true}
             style={{ height: "36px" }}
+            onChange={setStatusValue}
           >
             <Select.Option value="notStarted" display="Not Started" />
             <Select.Option value="inProgress" display="In Progress" />
@@ -56,7 +88,14 @@ const ViewTimeCodes = (props) => {
             text="Add"
             variant="action"
             type="button"
-            onClick={() => alert("Adding this info:")}
+            onClick={() =>
+              console.log(
+                "User submitted this info:",
+                inputTimeCodeValue,
+                inputProjectTitleValue,
+                inputStatusValue
+              )
+            }
           />
         </div>
       </div>
@@ -69,11 +108,5 @@ const ViewTimeCodes = (props) => {
     </Card>
   );
 };
-
-const propTypes = {
-  exampleProp: PropTypes.string,
-};
-
-ViewTimeCodes.propTypes = propTypes;
 
 export default ViewTimeCodes;

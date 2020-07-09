@@ -23,7 +23,9 @@ const TimeCodeProject = (props) => {
 };
 
 const propTypes = {
-  exampleProp: PropTypes.string,
+  timeCode: PropTypes.string,
+  projectTitle: PropTypes.string,
+  tag: PropTypes.string,
 };
 
 TimeCodeProject.propTypes = propTypes;
