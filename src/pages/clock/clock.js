@@ -6,7 +6,11 @@ import ClockComponent from "../../components/ClockComponent";
 
 const ClockContainer = (props) => {
   return(
-    <ClockComponent />
+    <div>
+      <div>Hello Clock Page</div>
+      <br />
+      <ClockComponent />
+    </div>
   );
     
 }

@@ -1,7 +1,7 @@
 
 import React, { useState }  from "react";
 import "../pages/clock/clock.css";
-// import InputField from "terra-form-input/lib/InputField";
+import InputField from "terra-form-input/lib/InputField";
 
 // import styles from './clock.css';
 // import classNames from 'classnames/bind';
@@ -84,15 +84,14 @@ const ClockComponent = (props) => {
   };
 
   return (
-    <div className="clock-container">
+    <div className="clock-component">
       <main id="main-content">
-        <div>Hello Clock Page</div>
 
         <form onSubmit={handleSubmit}>
           <label>
-            Total Hours Needed: 
+            Total Hours Needed 
           </label>
-          <input 
+          <InputField 
             type="number" 
             step=".01"
             min='0'
@@ -104,9 +103,9 @@ const ClockComponent = (props) => {
           <br />
 
           <label>
-            Hours Worked So Far(Must be less than Total Hours Needed): 
+            Hours Worked So Far(Must be less than Total Hours Needed)
           </label>
-          <input 
+          <InputField 
             type="number" 
             step="0.01"
             min='0'
@@ -118,9 +117,9 @@ const ClockComponent = (props) => {
           <br />
 
           <label>
-            Time of Last Clock In: 
+            Time of Last Clock In
           </label>
-          <input 
+          <InputField 
             type="time" 
             placeholder="13:30"
             value={lastClockIn}
@@ -128,7 +127,7 @@ const ClockComponent = (props) => {
           />
 
           <br />
-          <input type="submit" value="Submit" />
+          <InputField type="submit" value="Submit" />
         </form>
 
         <br />

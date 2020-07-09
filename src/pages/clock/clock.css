@@ -1,4 +1,4 @@
-.clock-container{
+.clock-component{
   align-items: flex-start;
   flex-wrap: wrap;
   width: 100%;
@@ -7,8 +7,13 @@
   border-bottom-style: solid;
   display: flex;
   justify-content: center;
+  padding: 5px;
 }
 
+#main-content label{
+  float: left;
+  font-size: 1.2em;
+}
 
 #clock-out-time{
   font-size: 2em;
