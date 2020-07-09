@@ -1,13 +1,18 @@
-import React from "react";
 
-function clock() {
-  return (
-    <div className="App">
-      <main id="main-content">
-        <div>Hello Clock Page</div>
-      </main>
+import React from "react";
+import ClockComponent from "../../components/ClockComponent";
+
+
+
+const ClockContainer = (props) => {
+  return(
+    <div>
+      <div>Hello Clock Page</div>
+      <br />
+      <ClockComponent />
     </div>
   );
+    
 }
 
-export default clock;
+export default ClockContainer;
