@@ -1,0 +1,11 @@
+.my-time-codes-container {
+  max-width: 30vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.time-code-project {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}

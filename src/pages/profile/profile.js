@@ -1,10 +1,12 @@
 import React from "react";
+import ViewTimeCodes from "../../components/ViewTimeCodes/ViewTimeCodes";
+import "./profile.css";
 
 function profile() {
   return (
-    <div className="App">
+    <div>
       <main id="main-content">
-        <div>Hello Profile Page</div>
+        <ViewTimeCodes />
       </main>
     </div>
   );
