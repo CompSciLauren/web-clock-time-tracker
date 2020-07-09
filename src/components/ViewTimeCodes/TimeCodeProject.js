@@ -9,12 +9,8 @@ const TimeCodeProject = (props) => {
     currentIntent = "positive";
   }
 
-  return (
-    <div className="time-code-project">
-      <p>{props.timeCode}</p>
-      <p>{props.projectTitle}</p>
-
-      <Badge text={props.tag} intent={currentIntent} size="medium" />
+  function CurrentStatus() {
+    return !props.timeSpent ? (
       <Select
         variant="default"
         defaultValue={props.tag}
@@ -25,6 +21,16 @@ const TimeCodeProject = (props) => {
         <Select.Option value="inProgress" display="In Progress" />
         <Select.Option value="completed" display="Completed" />
       </Select>
+    ) : (
+      <Badge text={props.tag} intent={currentIntent} size="medium" />
+    );
+  }
+
+  return (
+    <div className="time-code-project">
+      <p>{props.projectTitle}</p>
+      <CurrentStatus />
+      <p>{props.timeCode}</p>
       <p>{props.timeSpent}</p>
     </div>
   );

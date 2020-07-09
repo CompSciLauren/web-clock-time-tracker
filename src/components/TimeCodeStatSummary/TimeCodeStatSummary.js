@@ -29,6 +29,12 @@ const TimeCodeStatSummary = () => {
           tag="In-Progress"
           timeSpent="6.35 hours"
         />
+        <TimeCodeProject
+          timeCode="92847634"
+          projectTitle="Wow a project"
+          tag="Completed"
+          timeSpent="17 hours"
+        />
       </div>
     </Card>
   );
