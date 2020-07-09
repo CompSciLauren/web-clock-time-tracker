@@ -16,17 +16,38 @@ const ClockComponent = (props) => {
   // vars
   // const defaultHoursNeeded="8";
   // const defaultHoursWorked="16.19";
+  //new Date(0, 0, 0, 13, 30, 0, 0).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
   const defaultTime="13:30";
-  const clockOutTime= new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  const defaultClockOutTime= new Date(0, 0, 0, 17, 30, 0, 0);
 
   // state declarations
   // can set default values from saved preferences here
-  const [totalHoursNeeded, setTotalHoursNeeded] = useState();
-  const [hoursWorked, setHoursWorked] = useState();
+  const [totalHoursNeeded, setTotalHoursNeeded] = useState(0.0);
+  const [hoursWorked, setHoursWorked] = useState(0.0);
   const [lastClockIn, setLastClockIn] = useState(defaultTime);
+  const [clockOut, setClockOut] = useState(defaultClockOutTime);
 
 
-  // calculate time to clock out
+  /**
+   * calculate when user should clock out
+   */
+  const calcClockOut = () => {
+    let clockOutMin = 0;
+    let clockOutHour = 0;
+    // get hour and min of last clock in to use for math
+    let [clockInHour, clockInMin]=lastClockIn.split(":");
+    
+    //calculate min
+    clockOutMin = (totalHoursNeeded-hoursWorked)*60 + parseInt(clockInMin);
+    //math.floor rounds down to closets int.
+    clockOutHour = Math.floor(clockOutMin/60) + parseInt(clockInHour);
+    //get only the min
+    clockOutMin = clockOutMin % 60;
+    
+
+    //set to true so that clock out time renders
+    return new Date(0, 0, 0, clockOutHour, clockOutMin, 0, 0);
+  };
   
   /**
    * Do stuff with the user submitted hours needed, hours worked, and last clock in
@@ -51,7 +72,14 @@ const ClockComponent = (props) => {
     else
       message += `Error. Please enter when you Last Clocked In\n`;
 
-    alert(message);
+
+    // calculate clock out time
+    if(totalHoursNeeded!==null && hoursWorked!==null && lastClockIn!==null)
+      setClockOut(calcClockOut());
+    // calcClockOut()
+    else
+      alert(message);
+
   };
 
   return (
@@ -64,7 +92,9 @@ const ClockComponent = (props) => {
             Total Hours Needed: 
             <input 
               type="number" 
-              placeholder="8"
+              step=".01"
+              min='0'
+              placeholder="8.00"
               value={totalHoursNeeded} 
               onChange={e => setTotalHoursNeeded(e.target.value)} 
             />
@@ -73,10 +103,12 @@ const ClockComponent = (props) => {
           <br />
 
           <label>
-            Hours Worked So Far: 
+            Hours Worked So Far(Must be less than Total Hours Needed): 
             <input 
               type="number" 
-              placeholder="16.67"
+              step="0.01"
+              min='0'
+              placeholder="4.67"
               value={hoursWorked} 
               onChange={e => setHoursWorked(e.target.value)} 
             />
@@ -89,7 +121,6 @@ const ClockComponent = (props) => {
             <input 
               type="time" 
               placeholder="13:30"
-              onfocus="(this.type='date')"
               value={lastClockIn}
               onChange={e => setLastClockIn(e.target.value)} 
             />
@@ -102,7 +133,7 @@ const ClockComponent = (props) => {
         <br />
 
         <div id="clock-out-time">
-          Clock Out Time is {clockOutTime}
+          Clock Out Time is {clockOut.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
         </div>
 
       </main>
