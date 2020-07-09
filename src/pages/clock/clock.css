@@ -1,0 +1,15 @@
+.clock-container{
+  align-items: flex-start;
+  flex-wrap: wrap;
+  width: 100%;
+  background-color:#ebf6fd;
+  border-bottom-color: #d3d4d5;
+  border-bottom-style: solid;
+  display: flex;
+  justify-content: center;
+}
+
+
+#clock-out-time{
+  font-size: 2em;
+}
