@@ -1,9 +1,10 @@
 import React from "react";
+import TimeCodeStatSummary from "../../components/TimeCodeStatSummary/TimeCodeStatSummary.js";
 
-const statistics = (props) => {
+const statistics = () => {
   return (
     <div>
-      <div>Hello Statistics Page</div>
+      <TimeCodeStatSummary />
     </div>
   );
 };

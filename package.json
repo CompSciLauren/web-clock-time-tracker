@@ -12,6 +12,7 @@
     "react-intl": "^2.9.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
+    "terra-badge": "^3.39.0",
     "terra-base": "^5.36.0",
     "terra-button": "^3.43.0",
     "terra-card": "^3.32.0",
