@@ -1,13 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Tag from "terra-tag";
+import Select from "terra-form-select";
 
 const TimeCodeProject = (props) => {
   return (
     <div className="time-code-project">
       <p>{props.timeCode}</p>
       <p>{props.projectTitle}</p>
-      <Tag text="In-Progress" />
+      <Select
+        variant="default"
+        defaultValue="notStarted"
+        value={props.tag}
+        required={true}
+        style={{ height: "36px" }}
+      >
+        <Select.Option value="notStarted" display="Not Started" />
+        <Select.Option value="inProgress" display="In Progress" />
+        <Select.Option value="completed" display="Completed" />
+      </Select>
     </div>
   );
 };
