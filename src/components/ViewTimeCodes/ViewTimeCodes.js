@@ -12,6 +12,10 @@ const ViewTimeCodes = () => {
   const [inputTimeCodeValue, setInputTimeCodeValue] = useState("");
   const [inputProjectTitleValue, setInputProjectTitleValue] = useState("");
   const [inputStatusValue, setInputStatusValue] = useState("notStarted");
+  const [
+    inputShowCompletedTimeCodes,
+    setInputShowCompletedTimeCodes,
+  ] = useState(false);
 
   const setState = (anObject) => {
     if (anObject.hasOwnProperty("inputTimeCodeValue")) {
@@ -20,6 +24,8 @@ const ViewTimeCodes = () => {
       setInputProjectTitleValue(anObject.inputProjectTitleValue);
     } else if (anObject.hasOwnProperty("inputStatusValue")) {
       setInputStatusValue(anObject.inputStatusValue);
+    } else if (anObject.hasOwnProperty("inputShowCompletedTimeCodes")) {
+      setInputShowCompletedTimeCodes(anObject.inputShowCompletedTimeCodes);
     } else {
       console.log("Error, not an option. Got:", anObject);
     }
@@ -36,6 +42,38 @@ const ViewTimeCodes = () => {
   const setStatusValue = (value) => {
     setState({ inputStatusValue: value });
   };
+
+  const handleShowCompletedTimeCodesClick = (value) => {
+    setState({
+      inputShowCompletedTimeCodes: value.target._valueTracker.getValue(),
+    });
+  };
+
+  function ShowCompletedTimeCodes(props) {
+    console.log(props.isVisible);
+    return props.isVisible ? (
+      <div>
+        <br />
+        <br />
+        <br />
+        <TimeCodeProject
+          timeCode="1029372"
+          projectTitle="This One Was Bad"
+          tag="Completed"
+        />
+        <TimeCodeProject
+          timeCode="4928448"
+          projectTitle="Awesome One"
+          tag="Completed"
+        />
+        <TimeCodeProject
+          timeCode="92847634"
+          projectTitle="Wow a project"
+          tag="Completed"
+        />
+      </div>
+    ) : null;
+  }
 
   return (
     <Card variant="default" style={{ maxWidth: "40vw", margin: "auto" }}>
@@ -104,7 +142,9 @@ const ViewTimeCodes = () => {
         text="Show Completed Time Codes"
         shouldCloseOnClick={true}
         style={{ textAlign: "left" }}
+        onChange={handleShowCompletedTimeCodesClick}
       />
+      <ShowCompletedTimeCodes isVisible={inputShowCompletedTimeCodes} />
     </Card>
   );
 };
