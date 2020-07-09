@@ -4,6 +4,7 @@ import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import clock from "./pages/clock/clock.js";
 import profile from "./pages/profile/profile.js";
+import statistics from "./pages/statistics/statistics.js";
 
 function App() {
   return (
@@ -19,10 +20,14 @@ function App() {
                 <li>
                   <a href="/profile">Profile</a>
                 </li>
+                <li>
+                  <a href="/statistics">Statistics</a>
+                </li>
               </ul>
             </nav>
             <Route path="/" exact component={clock} />
             <Route path="/profile" exact component={profile} />
+            <Route path="/statistics" exact component={statistics} />
           </main>
         </Router>
       </div>
