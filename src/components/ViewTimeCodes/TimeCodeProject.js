@@ -9,8 +9,7 @@ const TimeCodeProject = (props) => {
       <p>{props.projectTitle}</p>
       <Select
         variant="default"
-        defaultValue="notStarted"
-        value={props.tag}
+        defaultValue={props.tag}
         required={true}
         style={{ height: "36px" }}
       >
