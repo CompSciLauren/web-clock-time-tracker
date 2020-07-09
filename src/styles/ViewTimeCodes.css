@@ -1,0 +1,18 @@
+.my-time-codes-container {
+  margin: auto;
+  display: grid;
+  grid-template-columns: auto;
+  justify-content: center;
+}
+
+.my-time-codes-item {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+}
+
+.time-code-project {
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  justify-content: space-between;
+}
