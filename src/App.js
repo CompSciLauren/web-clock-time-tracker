@@ -1,26 +1,30 @@
-import React from 'react';
-import Base from 'terra-base';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Base from "terra-base";
+import "./App.css";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import clock from "./pages/clock/clock.js";
+import profile from "./pages/profile/profile.js";
 
 function App() {
   return (
     <Base locale="en">
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Router>
+          <main>
+            <nav>
+              <ul>
+                <li>
+                  <a href="/">Clock</a>
+                </li>
+                <li>
+                  <a href="/profile">Profile</a>
+                </li>
+              </ul>
+            </nav>
+            <Route path="/" exact component={clock} />
+            <Route path="/profile" exact component={profile} />
+          </main>
+        </Router>
       </div>
     </Base>
   );
