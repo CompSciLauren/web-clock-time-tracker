@@ -1,5 +1,5 @@
 import React from "react";
-import ReminderAlarmComponent from "../../components/ReminderAlarmComponent";
+import ReminderAlarmComponent from "../../components/ReminderAlarm/ReminderAlarmComponent";
 function clock() {
   return (
     <div className="App">

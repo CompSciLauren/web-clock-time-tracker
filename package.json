@@ -16,6 +16,9 @@
     "terra-button": "^3.43.0",
     "terra-card": "^3.32.0",
     "terra-grid": "^6.22.0",
+    "terra-icon": "^3.33.0",
+    "terra-notification-dialog": "^3.36.0",
+    "terra-popup": "^6.36.0",
     "terra-tag": "^2.36.0",
     "terra-time-input": "^4.29.0"
   },
