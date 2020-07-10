@@ -13,8 +13,8 @@ const ViewTimeCodes = () => {
   const [inputProjectTitleValue, setInputProjectTitleValue] = useState("");
   const [inputStatusValue, setInputStatusValue] = useState("notStarted");
   const [
-    inputShowCompletedTimeCodes,
-    setInputShowCompletedTimeCodes,
+    inputRevealCompletedTimeCodes,
+    setInputRevealCompletedTimeCodes,
   ] = useState(false);
 
   const setState = (anObject) => {
@@ -24,8 +24,8 @@ const ViewTimeCodes = () => {
       setInputProjectTitleValue(anObject.inputProjectTitleValue);
     } else if (anObject.hasOwnProperty("inputStatusValue")) {
       setInputStatusValue(anObject.inputStatusValue);
-    } else if (anObject.hasOwnProperty("inputShowCompletedTimeCodes")) {
-      setInputShowCompletedTimeCodes(anObject.inputShowCompletedTimeCodes);
+    } else if (anObject.hasOwnProperty("inputRevealCompletedTimeCodes")) {
+      setInputRevealCompletedTimeCodes(anObject.inputRevealCompletedTimeCodes);
     } else {
       console.log("Error, not an option. Got:", anObject);
     }
@@ -43,13 +43,13 @@ const ViewTimeCodes = () => {
     setState({ inputStatusValue: value });
   };
 
-  const handleShowCompletedTimeCodesClick = (value) => {
+  const handleRevealCompletedTimeCodesClick = (value) => {
     setState({
-      inputShowCompletedTimeCodes: value.target._valueTracker.getValue(),
+      inputRevealCompletedTimeCodes: value.target._valueTracker.getValue(),
     });
   };
 
-  function ShowCompletedTimeCodes(props) {
+  function RevealCompletedTimeCodes(props) {
     console.log(props.isVisible);
     return props.isVisible ? (
       <div>
@@ -142,9 +142,9 @@ const ViewTimeCodes = () => {
         text="Show Completed Time Codes"
         shouldCloseOnClick={true}
         style={{ textAlign: "left" }}
-        onChange={handleShowCompletedTimeCodesClick}
+        onChange={handleRevealCompletedTimeCodesClick}
       />
-      <ShowCompletedTimeCodes isVisible={inputShowCompletedTimeCodes} />
+      <RevealCompletedTimeCodes isVisible={inputRevealCompletedTimeCodes} />
     </Card>
   );
 };
