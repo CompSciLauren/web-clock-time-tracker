@@ -154,7 +154,7 @@ const TimeCodeClockComponent = (props) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        username: "test@gmail.com",
+        email: "test@gmail.com",
         timeCode: focusedTimeCode,
         timeIn: now.toISOString(),
       }),
@@ -181,7 +181,7 @@ const TimeCodeClockComponent = (props) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        username: "test@gmail.com",
+        email: "test@gmail.com",
         timeCode: focusedTimeCode,
         timeOut: now.toISOString(),
       }),
