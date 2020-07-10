@@ -1,11 +1,19 @@
-.my-time-codes-container {
-  max-width: 30vw;
-  display: flex;
-  flex-direction: column;
+/* .my-time-codes-container {
+  margin: auto;
+  display: grid;
+  grid-template-columns: auto;
+  justify-content: center;
+} */
+
+.my-time-codes-item {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  margin-top: 20px;
 }
 
 .time-code-project {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  text-align: left;
+  justify-content: space-between;
 }

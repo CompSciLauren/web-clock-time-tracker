@@ -1,14 +1,24 @@
+
 import React from "react";
 import ReminderAlarmComponent from "../../components/ReminderAlarm/ReminderAlarmComponent";
-function clock() {
-  return (
-    <div className="App">
-      <main id="main-content">
-        <div> </div>
-        <ReminderAlarmComponent />
-      </main>
+import ClockComponent from "../../components/ClockComponent";
+import TimeCodeClockComponent from "../../components/TimeCodeClockComponent";
+
+
+
+const ClockContainer = (props) => {
+  return(
+    <div>
+      <div>Hello Clock Page</div>
+      <br />
+      <ClockComponent />
+      <br />
+      <ReminderAlarmComponent />
+      <br />
+      <TimeCodeClockComponent />
     </div>
   );
+    
 }
 
-export default clock;
+export default ClockContainer;
