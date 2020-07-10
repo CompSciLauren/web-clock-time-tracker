@@ -2,3 +2,28 @@
 #root {
   height: 100%;
 }
+
+nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  background-color: lightskyblue;
+}
+
+nav li {
+  text-decoration: none;
+  display: block;
+  float: left;
+  padding: calc(2px + 0.6vw) calc(4px + 0.6vw);
+  font-size: calc(16px + 0.2vw);
+}
+
+body {
+  padding-top: 100px;
+}
+
+.remove-decoration {
+  text-decoration: none;
+  color: #000;
+}

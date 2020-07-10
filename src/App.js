@@ -15,13 +15,19 @@ function App() {
             <nav>
               <ul>
                 <li>
-                  <a href="/">Clock</a>
+                  <a className="remove-decoration" href="/">
+                    Clock
+                  </a>
                 </li>
                 <li>
-                  <a href="/profile">Profile</a>
+                  <a className="remove-decoration" href="/profile">
+                    Profile
+                  </a>
                 </li>
                 <li>
-                  <a href="/statistics">Statistics</a>
+                  <a className="remove-decoration" href="/statistics">
+                    Statistics
+                  </a>
                 </li>
               </ul>
             </nav>

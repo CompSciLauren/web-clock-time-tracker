@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import Card from "terra-card";
 import Grid from "terra-grid";
 import TimeInput from "terra-time-input/lib/TimeInput";
@@ -18,7 +17,7 @@ class ReminderAlarmComponent extends React.Component {
   }
   render() {
     return (
-      <div className="reminder-alarm-container">
+      <>
         <h2>Web Clock Time Tracker</h2>
         <Card variant="default"> </Card>
         <h3>Set a Reminder</h3>
@@ -40,7 +39,7 @@ class ReminderAlarmComponent extends React.Component {
             />
           </Grid.Row>
         </Grid>
-      </div>
+      </>
     );
   }
 }
