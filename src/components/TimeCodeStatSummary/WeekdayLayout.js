@@ -13,13 +13,11 @@ const WeekdayLayout = () => {
     )
       .then((response) => response.text())
       .then((result) => {
-        console.log(typeof result);
         setData(JSON.parse(result));
       })
       .catch((error) => console.log("error", error));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  console.log(data);
   let rows = Object.keys(data).map((key, idx) => {
     let cells = data[key].map((val, idx) => {
       return {
@@ -83,48 +81,6 @@ const WeekdayLayout = () => {
       bodyData={[
         {
           rows: rows,
-
-          // [
-          //   {
-          //     key: "row-0",
-          //     cells: [
-          //       { key: "cell-0", children: "19378847" },
-          //       { key: "cell-1", children: "0" },
-          //       { key: "cell-2", children: "0" },
-          //       { key: "cell-3", children: "0" },
-          //       { key: "cell-4", children: "0" },
-          //       { key: "cell-5", children: "0" },
-          //       { key: "cell-6", children: "0" },
-          //       { key: "cell-7", children: "0" },
-          //     ],
-          //   },
-          //   {
-          //     key: "row-1",
-          //     cells: [
-          //       { key: "cell-0", children: "39572956" },
-          //       { key: "cell-1", children: "0" },
-          //       { key: "cell-2", children: "0" },
-          //       { key: "cell-3", children: "0" },
-          //       { key: "cell-4", children: "0" },
-          //       { key: "cell-5", children: "0" },
-          //       { key: "cell-6", children: "0" },
-          //       { key: "cell-7", children: "0" },
-          //     ],
-          //   },
-          //   {
-          //     key: "row-2",
-          //     cells: [
-          //       { key: "cell-0", children: "82659301" },
-          //       { key: "cell-1", children: "0" },
-          //       { key: "cell-2", children: "0" },
-          //       { key: "cell-3", children: "0" },
-          //       { key: "cell-4", children: "0" },
-          //       { key: "cell-5", children: "0" },
-          //       { key: "cell-6", children: "0" },
-          //       { key: "cell-7", children: "0" },
-          //     ],
-          //   },
-          // ],
         },
       ]}
     />
