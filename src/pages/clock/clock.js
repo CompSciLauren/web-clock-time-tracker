@@ -1,15 +1,12 @@
-
 import React from "react";
 import ReminderAlarmComponent from "../../components/ReminderAlarm/ReminderAlarmComponent";
 import ClockComponent from "../../components/ClockComponent";
 import TimeCodeClockComponent from "../../components/TimeCodeClockComponent";
 
-
-
 const ClockContainer = (props) => {
-  return(
+  return (
     <div>
-      <div>Hello Clock Page</div>
+      <h1>Web Clock Time Tracker</h1>
       <br />
       <ClockComponent />
       <br />
@@ -18,7 +15,6 @@ const ClockContainer = (props) => {
       <TimeCodeClockComponent />
     </div>
   );
-    
-}
+};
 
 export default ClockContainer;
