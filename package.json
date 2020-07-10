@@ -21,6 +21,7 @@
     "terra-form-select": "^6.10.0",
     "terra-heading": "^4.32.0",
     "terra-icon": "^3.33.0",
+    "terra-table": "^4.10.0",
     "terra-tag": "^2.36.0"
   },
   "scripts": {

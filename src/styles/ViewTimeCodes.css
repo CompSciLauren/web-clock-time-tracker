@@ -1,9 +1,9 @@
-.my-time-codes-container {
+/* .my-time-codes-container {
   margin: auto;
   display: grid;
   grid-template-columns: auto;
   justify-content: center;
-}
+} */
 
 .my-time-codes-item {
   display: grid;
