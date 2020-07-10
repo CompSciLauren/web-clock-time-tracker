@@ -13,7 +13,7 @@ import Select from "terra-form-select";
 
 const TimeCodeClockComponent = (props) => {
   // vars
-  // const testDate = new Date();
+  const testDate = new Date();
 
   // state declarations
   // can set default values from saved preferences here
@@ -23,7 +23,7 @@ const TimeCodeClockComponent = (props) => {
     { id: 0, timeCode: "10203704" },
     { id: 1, timeCode: "99999999" },
   ]);
-  const [dateLog, setDateLog] = useState();
+  const [dateLog, setDateLog] = useState(testDate);
   const [timeAddLog, setTimeAddLog] = useState();
 
   const [mockData, setMockData] = useState([
@@ -119,8 +119,14 @@ const TimeCodeClockComponent = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     //dateLog    timeAddLog      focusedTimeCode
+    // new Date(0, 0, 0, clockOutHour, clockOutMin, 0, 0);
     console.log("dateLog: ", dateLog);
+    console.log("typeof dateLog: ", typeof dateLog);
     console.log("timeAddLog: ", timeAddLog);
+    // let tempClockIn = new Date(dateLog, 0, 0, 0, 0);
+    // let tempClockOut = new Date(dateLog, timeAddLog, 0, 0, 0);
+    // console.log("tempClockIn: ", tempClockIn);
+    // console.log("tempClockOut: ", tempClockOut);
   };
 
   /**
@@ -204,6 +210,7 @@ const TimeCodeClockComponent = (props) => {
 
         <form onSubmit={addTimeCode}>
           <label>Create a New Time Code</label>
+          <input type="submit" value="Submit" />
           <InputField
             type="number"
             min="0"
