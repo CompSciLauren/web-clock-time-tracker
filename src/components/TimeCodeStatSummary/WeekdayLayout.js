@@ -31,7 +31,7 @@ const WeekdayLayout = () => {
           {
             id: "header-totalhours",
             key: "totalhours",
-            children: "Total Hours",
+            children: "Event Code",
           },
           { id: "header-sun", key: "sun", children: "Sun" },
           {

@@ -213,7 +213,7 @@ const TimeCodeClockComponent = (props) => {
           />
         </form>
 
-        <h3>Stopwatch</h3>
+        <h2>Stopwatch</h2>
         <label>Current Time Code</label>
         <Select
           variant="default"
@@ -261,28 +261,27 @@ const TimeCodeClockComponent = (props) => {
         />
 
         <br />
-
+        <br />
         <label>Time spent on this Time Code: {getTimeSpent()}</label>
-
         <br />
         <br />
+        <h2>Add New Entry</h2>
 
         <form onSubmit={handleSubmit}>
-          <label>"Total Time Spent on Above Date For Selected Time Code"</label>
+          <label>Select Date to Add Time Log</label>
+          <InputField
+            type="date"
+            required="true"
+            value={dateLog}
+            onChange={(e) => setDateLog(e.target.value)}
+          />
+          <label>Total time spent for selected Time Code</label>
           <InputField
             type="number"
             min="0"
             step="0.01"
             value={timeAddLog}
             onChange={(e) => setTimeAddLog(e.target.value)}
-          />
-
-          <label>"Select Date to Add Time Log"</label>
-          <InputField
-            type="date"
-            required="true"
-            value={dateLog}
-            onChange={(e) => setDateLog(e.target.value)}
           />
 
           <InputField type="submit" value="Submit" />
