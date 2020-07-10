@@ -3,6 +3,7 @@
 > Starter template for a hackathon project using React, Terra, and Prettier.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
 This project uses https://github.com/CompSciLauren/web-clock-time-tracker-backend for saving data.
 
 ## Available Scripts
