@@ -1,7 +1,7 @@
 
 import React, { useState }  from "react";
 import "../pages/clock/clock.css";
-import DropdownButton, { Item } from 'terra-dropdown-button';
+// import DropdownButton, { Item } from 'terra-dropdown-button';
 import Button from 'terra-button/lib/Button';
 import InputField from "terra-form-input/lib/InputField";
 import Select from "terra-form-select";
@@ -26,6 +26,8 @@ const TimeCodeClockComponent = (props) => {
   const [focusedTimeCode, setFocusedTimeCode] = useState('Time Code');
   const [candidateTimeCode, setCandidateTimeCode] = useState();
   const [timeCodes, setTimeCodes] = useState([{id:0, timeCode:'10203704'}, {id:1, timeCode:'99999999'}]);
+  const [dateLog, setDateLog] = useState();
+  const [timeAddLog, setTimeAddLog] = useState();
 
   const [mockData, setMockData] = useState([
     {
@@ -105,7 +107,7 @@ const TimeCodeClockComponent = (props) => {
    * create a new/additional log of time for the focused timeCode
    */
   const addTimeLog = () => {
-    
+
   };
 
 
@@ -204,9 +206,20 @@ const TimeCodeClockComponent = (props) => {
 
       <br />
 
-      <Button text="Add new time to Code Log" onClick={addTimeLog()}/>
+      
+      <InputField 
+        type="date" 
+        min='0'
+        value={dateLog} 
+        onChange={e => setDateLog(e.target.value)} 
+      />
 
-
+      <InputField 
+        type="number" 
+        min='0'
+        value={timeAddLog} 
+        onChange={e => setDateLog(e.target.value)} 
+      />
 
 
     </div>
