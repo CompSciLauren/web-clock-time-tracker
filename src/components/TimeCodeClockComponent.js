@@ -129,13 +129,30 @@ const TimeCodeClockComponent = (props) => {
   const handleStart = (event) => {
     event.preventDefault();
     // string var to print message
+    const now = new Date();
 
     // create new Start Code Log for selected time code
     console.log("Selected drop down id: ", focusedTimeCode);
 
     console.log("Selected TimeCodes", timeCodes[focusedTimeCode]);
 
-    alert("Start");
+    fetch("http://localhost:8000/api/timeEntry", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: "test@gmail.com",
+        timeCode: focusedTimeCode,
+        timeIn: now.toISOString(),
+      }),
+    })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   /**
@@ -144,8 +161,25 @@ const TimeCodeClockComponent = (props) => {
   const handleStop = (event) => {
     event.preventDefault();
     // string var to print message
+    const now = new Date();
 
-    alert("Stop");
+    fetch("http://localhost:8000/api/timeEntry", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: "test@gmail.com",
+        timeCode: focusedTimeCode,
+        timeOut: now.toISOString(),
+      }),
+    })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
