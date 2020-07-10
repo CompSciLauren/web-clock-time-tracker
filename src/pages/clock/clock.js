@@ -6,8 +6,6 @@ import TimeCodeClockComponent from "../../components/TimeCodeClockComponent";
 const ClockContainer = (props) => {
   return (
     <div>
-      <h1>Web Clock Time Tracker</h1>
-      <br />
       <ClockComponent />
       <br />
       <ReminderAlarmComponent />

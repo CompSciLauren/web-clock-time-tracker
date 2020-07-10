@@ -1,7 +1,6 @@
-
 import React, { useState } from "react";
 import "../pages/clock/clock.css";
-import DropdownButton, { Item } from "terra-dropdown-button";
+import Card from "terra-card";
 import Button from "terra-button/lib/Button";
 import InputField from "terra-form-input/lib/InputField";
 import Select from "terra-form-select";
@@ -18,9 +17,12 @@ const TimeCodeClockComponent = (props) => {
 
   // state declarations
   // can set default values from saved preferences here
-  const [focusedTimeCode, setFocusedTimeCode] = useState('Time Code');
+  const [focusedTimeCode, setFocusedTimeCode] = useState("Time Code");
   const [candidateTimeCode, setCandidateTimeCode] = useState();
-  const [timeCodes, setTimeCodes] = useState([{id:0, timeCode:'10203704'}, {id:1, timeCode:'99999999'}]);
+  const [timeCodes, setTimeCodes] = useState([
+    { id: 0, timeCode: "10203704" },
+    { id: 1, timeCode: "99999999" },
+  ]);
   const [dateLog, setDateLog] = useState();
   const [timeAddLog, setTimeAddLog] = useState();
 
@@ -111,17 +113,15 @@ const TimeCodeClockComponent = (props) => {
     }
   };
 
-
   /**
    * create a new/additional log of time for the focused timeCode
    */
   const handleSubmit = (event) => {
     event.preventDefault();
     //dateLog    timeAddLog      focusedTimeCode
-    console.log("dateLog: ", dateLog)
-    console.log("timeAddLog: ", timeAddLog)
+    console.log("dateLog: ", dateLog);
+    console.log("timeAddLog: ", timeAddLog);
   };
-
 
   /**
    * create a new/additional log of time for the focused timeCode
@@ -195,37 +195,43 @@ const TimeCodeClockComponent = (props) => {
   };
 
   return (
-    <div className="time-code-clock-component">
-      <span id="ClockCodeTitle">Time Code Tracker</span>
+    <Card
+      variant="raised"
+      style={{ marginBottom: "20px", paddingBottom: "16px" }}
+    >
+      <main id="main-content" style={{ width: "50%", margin: "auto" }}>
+        <h1>Time Code Tracker</h1>
 
-      <form onSubmit={addTimeCode}>
-        <label>Create a New Time Code</label>
-        <InputField
-          type="number"
-          min="0"
-          placeholder="10203704"
-          value={candidateTimeCode}
-          onChange={(e) => setCandidateTimeCode(e.target.value)}
-        />
-      </form>
-
-      <label>Current Time Code</label>
-      <Select
-        variant="default"
-        defaultValue="Time Code"
-        required={true}
-        onSelect={handleDropDown}
-      >
-        {timeCodes.map((item) => (
-          <Select.Option
-            key={item.id}
-            display={item.timeCode}
-            value={item.timeCode}
+        <form onSubmit={addTimeCode}>
+          <label>Create a New Time Code</label>
+          <InputField
+            type="number"
+            min="0"
+            placeholder="10203704"
+            value={candidateTimeCode}
+            onChange={(e) => setCandidateTimeCode(e.target.value)}
           />
-        ))}
-      </Select>
+        </form>
 
-      {/* <DropdownButton 
+        <h3>Stopwatch</h3>
+        <label>Current Time Code</label>
+        <Select
+          variant="default"
+          defaultValue="Time Code"
+          required={true}
+          onSelect={handleDropDown}
+          style={{ width: "40%", margin: "auto" }}
+        >
+          {timeCodes.map((item) => (
+            <Select.Option
+              key={item.id}
+              display={item.timeCode}
+              value={item.timeCode}
+            />
+          ))}
+        </Select>
+
+        {/* <DropdownButton 
         variant="ghost"
         label={focusedTimeCode}
       >
@@ -239,42 +245,51 @@ const TimeCodeClockComponent = (props) => {
       ))}
       </DropdownButton> */}
 
-      <br />
+        <br />
 
-      <Button text="Start" onClick={handleStart} />
-      <Button text="Stop" onClick={handleStop} />
-      
-      <br />
-
-    <label>Time spent on this Time Code: {getTimeSpent()}</label>
-
-      <br />
-      <br />
-
-      <form onSubmit={handleSubmit}>
-
-        <label>"Total Time Spent on Above Date For Selected Time Code"</label>
-        <InputField 
-          type="number" 
-          min='0'
-          step="0.01"
-          value={timeAddLog} 
-          onChange={e => setTimeAddLog(e.target.value)} 
+        <Button
+          variant="action"
+          text="Start"
+          onClick={handleStart}
+          style={{ marginRight: "12px" }}
+        />
+        <Button
+          variant="action"
+          text="Stop"
+          onClick={handleStop}
+          style={{ marginLeft: "12px" }}
         />
 
-        <label>"Select Date to Add Time Log"</label>
-        <InputField 
-          type="date"
-          required="true"
-          value={dateLog} 
-          onChange={e => setDateLog(e.target.value)} 
-        />
+        <br />
 
-        <InputField type="submit" value="Submit" />
-      </form>
+        <label>Time spent on this Time Code: {getTimeSpent()}</label>
 
-    </div>
+        <br />
+        <br />
+
+        <form onSubmit={handleSubmit}>
+          <label>"Total Time Spent on Above Date For Selected Time Code"</label>
+          <InputField
+            type="number"
+            min="0"
+            step="0.01"
+            value={timeAddLog}
+            onChange={(e) => setTimeAddLog(e.target.value)}
+          />
+
+          <label>"Select Date to Add Time Log"</label>
+          <InputField
+            type="date"
+            required="true"
+            value={dateLog}
+            onChange={(e) => setDateLog(e.target.value)}
+          />
+
+          <InputField type="submit" value="Submit" />
+        </form>
+      </main>
+    </Card>
   );
-}
+};
 
 export default TimeCodeClockComponent;
