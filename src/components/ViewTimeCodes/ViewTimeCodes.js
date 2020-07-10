@@ -34,6 +34,7 @@ const ViewTimeCodes = () => {
   };
 
   const setStatusValue = (value) => {
+    console.log('value', value);
     setState({ inputStatusValue: value });
   };
 
