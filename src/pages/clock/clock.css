@@ -18,3 +18,16 @@
 #clock-out-time{
   font-size: 2em;
 }
+
+
+
+
+.time-code-clock-component{
+  flex-wrap: wrap;
+  width: 50%;
+  background-color:#ebf6fd;
+  border-bottom-color: #d3d4d5;
+  border-bottom-style: solid;
+  float: center;
+  padding: 5px;
+}

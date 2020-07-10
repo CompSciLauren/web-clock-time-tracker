@@ -23,7 +23,7 @@ const ClockComponent = (props) => {
 
   // state declarations
   // can set default values from saved preferences here
-  const [totalHoursNeeded, setTotalHoursNeeded] = useState(0.0);
+  const [totalHoursNeeded, setTotalHoursNeeded] = useState(8.0);
   const [hoursWorked, setHoursWorked] = useState(0.0);
   const [lastClockIn, setLastClockIn] = useState(defaultTime);
   const [clockOut, setClockOut] = useState(defaultClockOutTime);
