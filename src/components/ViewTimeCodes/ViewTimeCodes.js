@@ -98,13 +98,6 @@ const ViewTimeCodes = () => {
         />
         <div className="my-time-codes-item">
           <InputField
-            label="Time Code"
-            inputId="inputTimeCode"
-            maxWidth="140px"
-            placeholder="10203704"
-            onChange={setTimeCodeValue}
-          />
-          <InputField
             label="Project Title"
             inputId="inputProjectTitle"
             maxWidth="140px"
@@ -122,6 +115,13 @@ const ViewTimeCodes = () => {
             <Select.Option value="inProgress" display="In Progress" />
             <Select.Option value="completed" display="Completed" />
           </Select>
+          <InputField
+            label="Time Code"
+            inputId="inputTimeCode"
+            maxWidth="140px"
+            placeholder="10203704"
+            onChange={setTimeCodeValue}
+          />
           <Button
             text="Add"
             variant="action"
