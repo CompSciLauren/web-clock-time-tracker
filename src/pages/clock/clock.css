@@ -1,8 +1,8 @@
-.clock-component{
+.clock-component {
   align-items: flex-start;
   flex-wrap: wrap;
   width: 100%;
-  background-color:#ebf6fd;
+  background-color: #ebf6fd;
   border-bottom-color: #d3d4d5;
   border-bottom-style: solid;
   display: flex;
@@ -10,22 +10,18 @@
   padding: 5px;
 }
 
-#main-content label{
+#main-content label {
   float: left;
   font-size: 1.2em;
 }
 
-#clock-out-time{
+#clock-out-time {
   font-size: 2em;
 }
 
-
-
-
-.time-code-clock-component{
+.time-code-clock-component {
   flex-wrap: wrap;
-  width: 50%;
-  background-color:#ebf6fd;
+  background-color: #ebf6fd;
   border-bottom-color: #d3d4d5;
   border-bottom-style: solid;
   float: center;
