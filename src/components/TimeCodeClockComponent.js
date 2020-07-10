@@ -106,9 +106,13 @@ const TimeCodeClockComponent = (props) => {
   /**
    * create a new/additional log of time for the focused timeCode
    */
-  const addTimeLog = () => {
-
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    //dateLog    timeAddLog      focusedTimeCode
+    console.log("dateLog: ", dateLog)
+    console.log("timeAddLog: ", timeAddLog)
   };
+
 
 
   /**
@@ -205,22 +209,29 @@ const TimeCodeClockComponent = (props) => {
     <label>Time spent on this Time Code: {getTimeSpent()}</label>
 
       <br />
+      <br />
 
-      
-      <InputField 
-        type="date" 
-        min='0'
-        value={dateLog} 
-        onChange={e => setDateLog(e.target.value)} 
-      />
+      <form onSubmit={handleSubmit}>
 
-      <InputField 
-        type="number" 
-        min='0'
-        value={timeAddLog} 
-        onChange={e => setDateLog(e.target.value)} 
-      />
+        <label>"Total Time Spent on Above Date For Selected Time Code"</label>
+        <InputField 
+          type="number" 
+          min='0'
+          step="0.01"
+          value={timeAddLog} 
+          onChange={e => setTimeAddLog(e.target.value)} 
+        />
 
+        <label>"Select Date to Add Time Log"</label>
+        <InputField 
+          type="date"
+          required="true"
+          value={dateLog} 
+          onChange={e => setDateLog(e.target.value)} 
+        />
+
+        <InputField type="submit" value="Submit" />
+      </form>
 
     </div>
   );
