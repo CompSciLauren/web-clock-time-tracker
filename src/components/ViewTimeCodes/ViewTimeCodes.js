@@ -51,28 +51,32 @@ const ViewTimeCodes = () => {
 
   function RevealCompletedTimeCodes(props) {
     console.log(props.isVisible);
-    return props.isVisible ? (
+    return (
       <div>
-        <br />
-        <br />
-        <br />
-        <TimeCodeProject
-          timeCode="1029372"
-          projectTitle="This One Was Bad"
-          tag="Completed"
-        />
-        <TimeCodeProject
-          timeCode="4928448"
-          projectTitle="Awesome One"
-          tag="Completed"
-        />
-        <TimeCodeProject
-          timeCode="92847634"
-          projectTitle="Wow a project"
-          tag="Completed"
-        />
+        {props.isVisible ? (
+          <div>
+            <br />
+            <br />
+            <br />
+            <TimeCodeProject
+              timeCode="1029372"
+              projectTitle="This One Was Bad"
+              tag="Completed"
+            />
+            <TimeCodeProject
+              timeCode="4928448"
+              projectTitle="Awesome One"
+              tag="Completed"
+            />
+            <TimeCodeProject
+              timeCode="92847634"
+              projectTitle="Wow a project"
+              tag="Completed"
+            />
+          </div>
+        ) : null}
       </div>
-    ) : null;
+    );
   }
 
   return (
