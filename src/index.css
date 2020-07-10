@@ -2,3 +2,36 @@
 #root {
   height: 100%;
 }
+
+nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  background-color: #014979;
+}
+
+nav li {
+  text-decoration: none;
+  display: block;
+  float: left;
+  padding: calc(2px + 0.6vw) calc(4px + 0.6vw);
+  font-size: calc(16px + 0.2vw);
+}
+
+nav li:hover {
+  background-color: #013152;
+}
+
+nav li a:hover {
+  color: #ffffff;
+}
+
+body {
+  padding-top: 100px;
+}
+
+.remove-decoration {
+  text-decoration: none;
+  color: #f1f5f8;
+}
