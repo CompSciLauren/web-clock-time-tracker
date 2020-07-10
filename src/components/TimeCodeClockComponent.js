@@ -201,12 +201,14 @@ const TimeCodeClockComponent = (props) => {
           />
         </form>
 
+        <h3>Stopwatch</h3>
         <label>Current Time Code</label>
         <Select
           variant="default"
           defaultValue="Time Code"
           required={true}
           onSelect={handleDropDown}
+          style={{ width: "40%", margin: "auto" }}
         >
           {timeCodes.map((item) => (
             <Select.Option
@@ -233,16 +235,33 @@ const TimeCodeClockComponent = (props) => {
 
         <br />
 
-        <Button text="Start" onClick={handleStart} />
-        <Button text="Stop" onClick={handleStop} />
+        <Button
+          variant="action"
+          text="Start"
+          onClick={handleStart}
+          style={{ marginRight: "12px" }}
+        />
+        <Button
+          variant="action"
+          text="Stop"
+          onClick={handleStop}
+          style={{ marginLeft: "12px" }}
+        />
 
+        <br />
         <br />
 
         <label>Time spent on this Time Code: {getTimeSpent()}</label>
 
         <br />
+        <br />
+        <h3>Add new time code</h3>
 
-        <Button text="Add new time to Code Log" onClick={addTimeLog()} />
+        <Button
+          variant="action"
+          text="Add new time to Code Log"
+          onClick={addTimeLog()}
+        />
       </main>
     </Card>
   );
