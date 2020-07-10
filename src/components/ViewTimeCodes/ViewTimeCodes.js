@@ -8,6 +8,37 @@ import TimeCodeProject from "./TimeCodeProject";
 import "../../styles/ViewTimeCodes.css";
 import Select from "terra-form-select";
 
+function RevealCompletedTimeCodes(props) {
+  console.log(props.isVisible);
+  return (
+    <div>
+      {props.isVisible}
+      {props.isVisible && (
+        <div>
+          <br />
+          <br />
+          <br />
+          <TimeCodeProject
+            timeCode="1029372"
+            projectTitle="This One Was Bad"
+            tag="Completed"
+          />
+          <TimeCodeProject
+            timeCode="4928448"
+            projectTitle="Awesome One"
+            tag="Completed"
+          />
+          <TimeCodeProject
+            timeCode="92847634"
+            projectTitle="Wow a project"
+            tag="Completed"
+          />
+        </div>
+      )}
+    </div>
+  );
+}
+
 const ViewTimeCodes = () => {
   const [inputTimeCodeValue, setInputTimeCodeValue] = useState("");
   const [inputProjectTitleValue, setInputProjectTitleValue] = useState("");
@@ -18,6 +49,7 @@ const ViewTimeCodes = () => {
   ] = useState(false);
 
   const setState = (anObject) => {
+    console.log("anObject:\n", anObject);
     if (anObject.hasOwnProperty("inputTimeCodeValue")) {
       setInputTimeCodeValue(anObject.inputTimeCodeValue);
     } else if (anObject.hasOwnProperty("inputProjectTitleValue")) {
@@ -43,41 +75,11 @@ const ViewTimeCodes = () => {
     setState({ inputStatusValue: value });
   };
 
-  const handleRevealCompletedTimeCodesClick = (value) => {
+  const handleRevealCompletedTimeCodesClick = (event, isSelected) => {
     setState({
-      inputRevealCompletedTimeCodes: value.target._valueTracker.getValue(),
+      inputRevealCompletedTimeCodes: isSelected,
     });
   };
-
-  function RevealCompletedTimeCodes(props) {
-    console.log(props.isVisible);
-    return (
-      <div>
-        {props.isVisible ? (
-          <div>
-            <br />
-            <br />
-            <br />
-            <TimeCodeProject
-              timeCode="1029372"
-              projectTitle="This One Was Bad"
-              tag="Completed"
-            />
-            <TimeCodeProject
-              timeCode="4928448"
-              projectTitle="Awesome One"
-              tag="Completed"
-            />
-            <TimeCodeProject
-              timeCode="92847634"
-              projectTitle="Wow a project"
-              tag="Completed"
-            />
-          </div>
-        ) : null}
-      </div>
-    );
-  }
 
   return (
     <Card variant="default" style={{ maxWidth: "40vw", margin: "auto" }}>
