@@ -54,6 +54,23 @@ const TimeCodeClockComponent = (props) => {
           timeCode: candidateTimeCode,
         },
       ]);
+
+      fetch("http://localhost:8000/api/timecodes", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: candidateTimeCode,
+          description: "Omg it's a title",
+        }),
+      })
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     } else {
       alert("Error. That time code already exists");
     }
