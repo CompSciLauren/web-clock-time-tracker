@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import "../pages/clock/clock.css";
 import DropdownButton, { Item } from "terra-dropdown-button";
@@ -17,12 +18,11 @@ const TimeCodeClockComponent = (props) => {
 
   // state declarations
   // can set default values from saved preferences here
-  const [focusedTimeCode, setFocusedTimeCode] = useState("Time Code");
+  const [focusedTimeCode, setFocusedTimeCode] = useState('Time Code');
   const [candidateTimeCode, setCandidateTimeCode] = useState();
-  const [timeCodes, setTimeCodes] = useState([
-    { id: 0, timeCode: "10203704" },
-    { id: 1, timeCode: "99999999" },
-  ]);
+  const [timeCodes, setTimeCodes] = useState([{id:0, timeCode:'10203704'}, {id:1, timeCode:'99999999'}]);
+  const [dateLog, setDateLog] = useState();
+  const [timeAddLog, setTimeAddLog] = useState();
 
   const [mockData, setMockData] = useState([
     {
@@ -110,6 +110,18 @@ const TimeCodeClockComponent = (props) => {
       //do nothing
     }
   };
+
+
+  /**
+   * create a new/additional log of time for the focused timeCode
+   */
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    //dateLog    timeAddLog      focusedTimeCode
+    console.log("dateLog: ", dateLog)
+    console.log("timeAddLog: ", timeAddLog)
+  };
+
 
   /**
    * create a new/additional log of time for the focused timeCode
@@ -231,16 +243,38 @@ const TimeCodeClockComponent = (props) => {
 
       <Button text="Start" onClick={handleStart} />
       <Button text="Stop" onClick={handleStop} />
-
+      
       <br />
 
-      <label>Time spent on this Time Code: {getTimeSpent()}</label>
+    <label>Time spent on this Time Code: {getTimeSpent()}</label>
 
       <br />
+      <br />
 
-      <Button text="Add new time to Code Log" onClick={addTimeLog()} />
+      <form onSubmit={handleSubmit}>
+
+        <label>"Total Time Spent on Above Date For Selected Time Code"</label>
+        <InputField 
+          type="number" 
+          min='0'
+          step="0.01"
+          value={timeAddLog} 
+          onChange={e => setTimeAddLog(e.target.value)} 
+        />
+
+        <label>"Select Date to Add Time Log"</label>
+        <InputField 
+          type="date"
+          required="true"
+          value={dateLog} 
+          onChange={e => setDateLog(e.target.value)} 
+        />
+
+        <InputField type="submit" value="Submit" />
+      </form>
+
     </div>
   );
-};
+}
 
 export default TimeCodeClockComponent;
