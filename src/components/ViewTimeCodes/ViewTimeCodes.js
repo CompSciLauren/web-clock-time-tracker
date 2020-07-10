@@ -12,6 +12,10 @@ const ViewTimeCodes = () => {
   const [inputTimeCodeValue, setInputTimeCodeValue] = useState("");
   const [inputProjectTitleValue, setInputProjectTitleValue] = useState("");
   const [inputStatusValue, setInputStatusValue] = useState("notStarted");
+  const [
+    inputRevealCompletedTimeCodes,
+    setInputRevealCompletedTimeCodes,
+  ] = useState(false);
 
   const setState = (anObject) => {
     if (anObject.hasOwnProperty("inputTimeCodeValue")) {
@@ -20,6 +24,8 @@ const ViewTimeCodes = () => {
       setInputProjectTitleValue(anObject.inputProjectTitleValue);
     } else if (anObject.hasOwnProperty("inputStatusValue")) {
       setInputStatusValue(anObject.inputStatusValue);
+    } else if (anObject.hasOwnProperty("inputRevealCompletedTimeCodes")) {
+      setInputRevealCompletedTimeCodes(anObject.inputRevealCompletedTimeCodes);
     } else {
       console.log("Error, not an option. Got:", anObject);
     }
@@ -36,6 +42,42 @@ const ViewTimeCodes = () => {
   const setStatusValue = (value) => {
     setState({ inputStatusValue: value });
   };
+
+  const handleRevealCompletedTimeCodesClick = (value) => {
+    setState({
+      inputRevealCompletedTimeCodes: value.target._valueTracker.getValue(),
+    });
+  };
+
+  function RevealCompletedTimeCodes(props) {
+    console.log(props.isVisible);
+    return (
+      <div>
+        {props.isVisible ? (
+          <div>
+            <br />
+            <br />
+            <br />
+            <TimeCodeProject
+              timeCode="1029372"
+              projectTitle="This One Was Bad"
+              tag="Completed"
+            />
+            <TimeCodeProject
+              timeCode="4928448"
+              projectTitle="Awesome One"
+              tag="Completed"
+            />
+            <TimeCodeProject
+              timeCode="92847634"
+              projectTitle="Wow a project"
+              tag="Completed"
+            />
+          </div>
+        ) : null}
+      </div>
+    );
+  }
 
   return (
     <Card variant="default" style={{ maxWidth: "40vw", margin: "auto" }}>
@@ -60,13 +102,6 @@ const ViewTimeCodes = () => {
         />
         <div className="my-time-codes-item">
           <InputField
-            label="Time Code"
-            inputId="inputTimeCode"
-            maxWidth="140px"
-            placeholder="10203704"
-            onChange={setTimeCodeValue}
-          />
-          <InputField
             label="Project Title"
             inputId="inputProjectTitle"
             maxWidth="140px"
@@ -84,6 +119,13 @@ const ViewTimeCodes = () => {
             <Select.Option value="inProgress" display="In Progress" />
             <Select.Option value="completed" display="Completed" />
           </Select>
+          <InputField
+            label="Time Code"
+            inputId="inputTimeCode"
+            maxWidth="140px"
+            placeholder="10203704"
+            onChange={setTimeCodeValue}
+          />
           <Button
             text="Add"
             variant="action"
@@ -104,7 +146,9 @@ const ViewTimeCodes = () => {
         text="Show Completed Time Codes"
         shouldCloseOnClick={true}
         style={{ textAlign: "left" }}
+        onChange={handleRevealCompletedTimeCodesClick}
       />
+      <RevealCompletedTimeCodes isVisible={inputRevealCompletedTimeCodes} />
     </Card>
   );
 };
