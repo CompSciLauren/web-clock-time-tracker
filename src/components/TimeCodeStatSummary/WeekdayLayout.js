@@ -18,19 +18,7 @@ const WeekdayLayout = () => {
       .catch((error) => console.log("error", error));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  let rows = Object.keys(data).map((key, idx) => {
-    let cells = data[key].map((val, idx) => {
-      return {
-        key: `cell-${idx + 1}`,
-        children: val,
-      };
-    });
-    cells = [{ key: "cell-0", children: key }].concat(cells);
-    return {
-      key: `row-${idx}`,
-      cells: cells,
-    };
-  });
+
   return (
     <Table
       summaryId="standard-table"
@@ -80,7 +68,19 @@ const WeekdayLayout = () => {
       }}
       bodyData={[
         {
-          rows: rows,
+          rows: Object.keys(data).map((key, idx) => {
+            let cells = data[key].map((val, idx) => {
+              return {
+                key: `cell-${idx + 1}`,
+                children: val,
+              };
+            });
+            cells = [{ key: "cell-0", children: key }].concat(cells);
+            return {
+              key: `row-${idx}`,
+              cells: cells,
+            };
+          }),
         },
       ]}
     />
