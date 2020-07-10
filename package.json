@@ -12,6 +12,7 @@
     "react-intl": "^2.9.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
+    "terra-badge": "^3.39.0",
     "terra-base": "^5.36.0",
     "terra-button": "^3.43.0",
     "terra-card": "^3.32.0",
@@ -21,7 +22,9 @@
     "terra-heading": "^4.32.0",
     "terra-icon": "^3.33.0",
     "terra-tag": "^2.36.0",
-    "terra-dropdown-button": "v1.17.0"
+    "terra-dropdown-button": "v1.17.0",
+    "terra-table": "^4.10.0",
+    "terra-tag": "^2.36.0"
   },
   "scripts": {
     "aggregate-translations": "tt-aggregate-translations -b ./ -d ./src/**/translations -d ./translations -o ./node_modules/terra-i18n/node_modules -f es6",
