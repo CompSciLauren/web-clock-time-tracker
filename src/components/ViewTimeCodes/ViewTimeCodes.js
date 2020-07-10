@@ -72,7 +72,7 @@ const ViewTimeCodes = () => {
   };
 
   const setStatusValue = (value) => {
-    console.log('value', value);
+    console.log("value", value);
     setState({ inputStatusValue: value });
   };
 
@@ -134,12 +134,22 @@ const ViewTimeCodes = () => {
             variant="action"
             type="button"
             onClick={() =>
-              console.log(
-                "User submitted this info:",
-                inputTimeCodeValue,
-                inputProjectTitleValue,
-                inputStatusValue
-              )
+              fetch("http://localhost:8000/api/timecodes", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  id: inputTimeCodeValue,
+                  description: inputProjectTitleValue,
+                }),
+              })
+                .then((res) => {
+                  console.log(res);
+                })
+                .catch((err) => {
+                  console.log(err);
+                })
             }
           />
         </div>
