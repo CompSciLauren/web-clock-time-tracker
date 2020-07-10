@@ -8,7 +8,7 @@ nav {
   top: 0;
   left: 0;
   width: 100vw;
-  background-color: lightskyblue;
+  background-color: #014979;
 }
 
 nav li {
@@ -19,11 +19,19 @@ nav li {
   font-size: calc(16px + 0.2vw);
 }
 
+nav li:hover {
+  background-color: #013152;
+}
+
+nav li a:hover {
+  color: #ffffff;
+}
+
 body {
   padding-top: 100px;
 }
 
 .remove-decoration {
   text-decoration: none;
-  color: #000;
+  color: #f1f5f8;
 }
