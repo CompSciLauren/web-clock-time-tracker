@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../pages/clock/clock.css";
-import DropdownButton, { Item } from "terra-dropdown-button";
+import Card from "terra-card";
 import Button from "terra-button/lib/Button";
 import InputField from "terra-form-input/lib/InputField";
 import Select from "terra-form-select";
@@ -183,37 +183,41 @@ const TimeCodeClockComponent = (props) => {
   };
 
   return (
-    <div className="time-code-clock-component">
-      <span id="ClockCodeTitle">Time Code Tracker</span>
+    <Card
+      variant="raised"
+      style={{ marginBottom: "20px", paddingBottom: "16px" }}
+    >
+      <main id="main-content" style={{ width: "50%", margin: "auto" }}>
+        <h1>Time Code Tracker</h1>
 
-      <form onSubmit={addTimeCode}>
-        <label>Create a New Time Code</label>
-        <InputField
-          type="number"
-          min="0"
-          placeholder="10203704"
-          value={candidateTimeCode}
-          onChange={(e) => setCandidateTimeCode(e.target.value)}
-        />
-      </form>
-
-      <label>Current Time Code</label>
-      <Select
-        variant="default"
-        defaultValue="Time Code"
-        required={true}
-        onSelect={handleDropDown}
-      >
-        {timeCodes.map((item) => (
-          <Select.Option
-            key={item.id}
-            display={item.timeCode}
-            value={item.timeCode}
+        <form onSubmit={addTimeCode}>
+          <label>Create a New Time Code</label>
+          <InputField
+            type="number"
+            min="0"
+            placeholder="10203704"
+            value={candidateTimeCode}
+            onChange={(e) => setCandidateTimeCode(e.target.value)}
           />
-        ))}
-      </Select>
+        </form>
 
-      {/* <DropdownButton 
+        <label>Current Time Code</label>
+        <Select
+          variant="default"
+          defaultValue="Time Code"
+          required={true}
+          onSelect={handleDropDown}
+        >
+          {timeCodes.map((item) => (
+            <Select.Option
+              key={item.id}
+              display={item.timeCode}
+              value={item.timeCode}
+            />
+          ))}
+        </Select>
+
+        {/* <DropdownButton 
         variant="ghost"
         label={focusedTimeCode}
       >
@@ -227,19 +231,20 @@ const TimeCodeClockComponent = (props) => {
       ))}
       </DropdownButton> */}
 
-      <br />
+        <br />
 
-      <Button text="Start" onClick={handleStart} />
-      <Button text="Stop" onClick={handleStop} />
+        <Button text="Start" onClick={handleStart} />
+        <Button text="Stop" onClick={handleStop} />
 
-      <br />
+        <br />
 
-      <label>Time spent on this Time Code: {getTimeSpent()}</label>
+        <label>Time spent on this Time Code: {getTimeSpent()}</label>
 
-      <br />
+        <br />
 
-      <Button text="Add new time to Code Log" onClick={addTimeLog()} />
-    </div>
+        <Button text="Add new time to Code Log" onClick={addTimeLog()} />
+      </main>
+    </Card>
   );
 };
 
