@@ -23,6 +23,8 @@ const TimeCodeClockComponent = (props) => {
     { id: 0, timeCode: "10203704" },
     { id: 1, timeCode: "99999999" },
   ]);
+  const [dateLog, setDateLog] = useState();
+  const [timeAddLog, setTimeAddLog] = useState();
 
   const [mockData, setMockData] = useState([
     {
@@ -109,6 +111,16 @@ const TimeCodeClockComponent = (props) => {
     } catch {
       //do nothing
     }
+  };
+
+  /**
+   * create a new/additional log of time for the focused timeCode
+   */
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    //dateLog    timeAddLog      focusedTimeCode
+    console.log("dateLog: ", dateLog);
+    console.log("timeAddLog: ", timeAddLog);
   };
 
   /**
@@ -249,19 +261,32 @@ const TimeCodeClockComponent = (props) => {
         />
 
         <br />
-        <br />
 
         <label>Time spent on this Time Code: {getTimeSpent()}</label>
 
         <br />
         <br />
-        <h3>Add new time code</h3>
 
-        <Button
-          variant="action"
-          text="Add new time to Code Log"
-          onClick={addTimeLog()}
-        />
+        <form onSubmit={handleSubmit}>
+          <label>"Total Time Spent on Above Date For Selected Time Code"</label>
+          <InputField
+            type="number"
+            min="0"
+            step="0.01"
+            value={timeAddLog}
+            onChange={(e) => setTimeAddLog(e.target.value)}
+          />
+
+          <label>"Select Date to Add Time Log"</label>
+          <InputField
+            type="date"
+            required="true"
+            value={dateLog}
+            onChange={(e) => setDateLog(e.target.value)}
+          />
+
+          <InputField type="submit" value="Submit" />
+        </form>
       </main>
     </Card>
   );
