@@ -1,9 +1,6 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
+import React from "react";
 import Popup from "terra-popup";
-import NotificationDialog, {
-  NotificationDialogVariants,
-} from "terra-notification-dialog";
+import NotificationDialog from "terra-notification-dialog";
 import AlarmAlert from "./AlarmAlert";
 
 class ClockOutTimer extends React.Component {
@@ -40,7 +37,7 @@ class ClockOutTimer extends React.Component {
   }
 
   checkAlarmClock() {
-    if (this.state.alarmTime == "undefined" || !this.state.alarmTime) {
+    if (this.state.alarmTime === "undefined" || !this.state.alarmTime) {
     } else {
       if (this.state.currentTime === this.state.alarmTime) {
         this.setState({ open: true });
@@ -50,15 +47,11 @@ class ClockOutTimer extends React.Component {
   }
 
   render() {
-    let cTime;
-    cTime = this.state.alarmTime;
-    let rtime;
-    rtime = this.state.currentTime;
     let content;
     let alert;
-    if (this.state.alarmTime != "") {
+    if (this.state.alarmTime !== "") {
       alert = <AlarmAlert />;
-      if (this.state.alarmTime == this.state.currentTime) {
+      if (this.state.alarmTime === this.state.currentTime) {
         content = (
           <Popup isOpen={true} onRequestClose={false}>
             <NotificationDialog

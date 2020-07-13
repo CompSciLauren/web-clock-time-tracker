@@ -26,6 +26,7 @@ const TimeCodeClockComponent = (props) => {
   const [dateLog, setDateLog] = useState(testDate);
   const [timeAddLog, setTimeAddLog] = useState();
 
+  // eslint-disable-next-line
   const [mockData, setMockData] = useState([
     {
       id: 0,
@@ -128,11 +129,6 @@ const TimeCodeClockComponent = (props) => {
     // console.log("tempClockIn: ", tempClockIn);
     // console.log("tempClockOut: ", tempClockOut);
   };
-
-  /**
-   * create a new/additional log of time for the focused timeCode
-   */
-  const addTimeLog = () => {};
 
   /**
    * update which timeCode is in focus

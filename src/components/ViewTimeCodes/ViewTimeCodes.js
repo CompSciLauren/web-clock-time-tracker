@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Button from "terra-button";
 import CollapsibleMenuView from "terra-collapsible-menu-view";
 import Card from "terra-card";
-import Heading from "terra-heading";
 import InputField from "terra-form-input/lib/InputField";
 import TimeCodeProject from "./TimeCodeProject";
 import "../../styles/ViewTimeCodes.css";
@@ -42,6 +41,8 @@ function RevealCompletedTimeCodes(props) {
 const ViewTimeCodes = () => {
   const [inputTimeCodeValue, setInputTimeCodeValue] = useState("");
   const [inputProjectTitleValue, setInputProjectTitleValue] = useState("");
+
+  // eslint-disable-next-line
   const [inputStatusValue, setInputStatusValue] = useState("notStarted");
   const [
     inputRevealCompletedTimeCodes,

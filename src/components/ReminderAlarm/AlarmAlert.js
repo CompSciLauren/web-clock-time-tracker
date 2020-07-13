@@ -1,13 +1,8 @@
 import React, { useState } from "react";
 import Button from "terra-button";
 import IconCheckmark from "terra-icon/lib/icon/IconCheckmark";
-import NotificationDialog, {
-  NotificationDialogVariants,
-} from "terra-notification-dialog";
+import NotificationDialog from "terra-notification-dialog";
 
-const clickConfirm = () => {
-  console.log("You clicked confirm"); // eslint-disable-line no-console
-};
 const CompleteNotificationDialog = () => {
   const [isOpen, setIsOpen] = useState(false);
   const handleOpenModal = () => {
