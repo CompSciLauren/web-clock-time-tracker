@@ -3,46 +3,36 @@ import Card from "terra-card";
 import InputField from "terra-form-input/lib/InputField";
 import "../pages/clock/clock.css";
 
-// import styles from './clock.css';
-// import classNames from 'classnames/bind';
+const defaultTime = "13:30";
+const defaultClockOutTime = new Date(0, 0, 0, 17, 30, 0, 0);
 
-// mangle class names
-// const cx = classNames.bind(styles);
+/**
+ * calculate when user should clock out
+ */
+const calcClockOut = ({ lastClockIn, totalHoursNeeded, hoursWorked } = {}) => {
+  let clockOutMin = 0;
+  let clockOutHour = 0;
+  // get hour and min of last clock in to use for math
+  let [clockInHour, clockInMin] = lastClockIn.split(":");
+
+  //calculate min
+  clockOutMin = (totalHoursNeeded - hoursWorked) * 60 + parseInt(clockInMin);
+  //math.floor rounds down to closets int.
+  clockOutHour = Math.floor(clockOutMin / 60) + parseInt(clockInHour);
+  //get only the min
+  clockOutMin = clockOutMin % 60;
+
+  //set to true so that clock out time renders
+  return new Date(0, 0, 0, clockOutHour, clockOutMin, 0, 0);
+};
 
 const ClockComponent = (props) => {
-  // vars
-  // const defaultHoursNeeded="8";
-  // const defaultHoursWorked="16.19";
-  //new Date(0, 0, 0, 13, 30, 0, 0).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-  const defaultTime = "13:30";
-  const defaultClockOutTime = new Date(0, 0, 0, 17, 30, 0, 0);
-
   // state declarations
   // can set default values from saved preferences here
   const [totalHoursNeeded, setTotalHoursNeeded] = useState(8.0);
   const [hoursWorked, setHoursWorked] = useState(0.0);
   const [lastClockIn, setLastClockIn] = useState(defaultTime);
   const [clockOut, setClockOut] = useState(defaultClockOutTime);
-
-  /**
-   * calculate when user should clock out
-   */
-  const calcClockOut = () => {
-    let clockOutMin = 0;
-    let clockOutHour = 0;
-    // get hour and min of last clock in to use for math
-    let [clockInHour, clockInMin] = lastClockIn.split(":");
-
-    //calculate min
-    clockOutMin = (totalHoursNeeded - hoursWorked) * 60 + parseInt(clockInMin);
-    //math.floor rounds down to closets int.
-    clockOutHour = Math.floor(clockOutMin / 60) + parseInt(clockInHour);
-    //get only the min
-    clockOutMin = clockOutMin % 60;
-
-    //set to true so that clock out time renders
-    return new Date(0, 0, 0, clockOutHour, clockOutMin, 0, 0);
-  };
 
   /**
    * Do stuff with the user submitted hours needed, hours worked, and last clock in
@@ -68,8 +58,7 @@ const ClockComponent = (props) => {
       hoursWorked !== null &&
       lastClockIn !== null
     )
-      setClockOut(calcClockOut());
-    // calcClockOut()
+      setClockOut(calcClockOut({ lastClockIn, hoursWorked, totalHoursNeeded }));
     else alert(message);
   };
 
@@ -82,8 +71,9 @@ const ClockComponent = (props) => {
         <h1>Web Clock Time Tracker</h1>
 
         <form onSubmit={handleSubmit}>
-          <label>Total Hours Needed</label>
           <InputField
+            label="Total Hours Needed"
+            inputId="totalHoursNeeded"
             type="number"
             step=".01"
             min="0"
@@ -94,8 +84,9 @@ const ClockComponent = (props) => {
 
           <br />
 
-          <label>Hours Worked So Far</label>
           <InputField
+            label="Hours Worked So Far"
+            inputId="hoursWorked"
             type="number"
             step="0.01"
             min="0"
@@ -106,16 +97,21 @@ const ClockComponent = (props) => {
 
           <br />
 
-          <label>Time of Last Clock In</label>
           <InputField
+            label="Time of Last Clock In"
+            inputId="lastClockIn"
             type="time"
             placeholder="13:30"
-            value={lastClockIn}
             onChange={(e) => setLastClockIn(e.target.value)}
           />
 
           <br />
-          <InputField type="submit" value="Submit" />
+          <InputField
+            label="Submit"
+            type="submit"
+            value="Submit"
+            inputId="clockComponentSubmit"
+          />
         </form>
 
         <br />
