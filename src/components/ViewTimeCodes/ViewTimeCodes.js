@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Button from "terra-button";
-import CollapsibleMenuView from "terra-collapsible-menu-view";
+import Checkbox from "terra-form-checkbox";
 import Card from "terra-card";
 import InputField from "terra-form-input/lib/InputField";
 import TimeCodeProject from "./TimeCodeProject";
@@ -8,32 +8,27 @@ import "../../styles/ViewTimeCodes.css";
 import Select from "terra-form-select";
 
 function RevealCompletedTimeCodes(props) {
-  console.log(props.isVisible);
+  if (!props.isVisible) {
+    return null;
+  }
+
   return (
-    <div>
-      {props.isVisible}
-      {props.isVisible && (
-        <div>
-          <br />
-          <br />
-          <br />
-          <TimeCodeProject
-            timeCode="1029372"
-            projectTitle="This One Was Bad"
-            tag="Completed"
-          />
-          <TimeCodeProject
-            timeCode="4928448"
-            projectTitle="Awesome One"
-            tag="Completed"
-          />
-          <TimeCodeProject
-            timeCode="92847634"
-            projectTitle="Wow a project"
-            tag="Completed"
-          />
-        </div>
-      )}
+    <div className="time-code-project-container">
+      <TimeCodeProject
+        timeCode="1029372"
+        projectTitle="This One Was Bad"
+        tag="Completed"
+      />
+      <TimeCodeProject
+        timeCode="4928448"
+        projectTitle="Awesome One"
+        tag="Completed"
+      />
+      <TimeCodeProject
+        timeCode="92847634"
+        projectTitle="Wow a project"
+        tag="Completed"
+      />
     </div>
   );
 }
@@ -42,15 +37,13 @@ const ViewTimeCodes = () => {
   const [inputTimeCodeValue, setInputTimeCodeValue] = useState("");
   const [inputProjectTitleValue, setInputProjectTitleValue] = useState("");
 
-  // eslint-disable-next-line
-  const [inputStatusValue, setInputStatusValue] = useState("notStarted");
+  const [, setInputStatusValue] = useState("notStarted");
   const [
     inputRevealCompletedTimeCodes,
     setInputRevealCompletedTimeCodes,
   ] = useState(false);
 
   const setState = (anObject) => {
-    console.log("anObject:\n", anObject);
     if (anObject.hasOwnProperty("inputTimeCodeValue")) {
       setInputTimeCodeValue(anObject.inputTimeCodeValue);
     } else if (anObject.hasOwnProperty("inputProjectTitleValue")) {
@@ -73,14 +66,11 @@ const ViewTimeCodes = () => {
   };
 
   const setStatusValue = (value) => {
-    console.log("value", value);
     setState({ inputStatusValue: value });
   };
 
-  const handleRevealCompletedTimeCodesClick = (event, isSelected) => {
-    setState({
-      inputRevealCompletedTimeCodes: isSelected,
-    });
+  const handleRevealCompletedTimeCodesClick = () => {
+    setInputRevealCompletedTimeCodes(!inputRevealCompletedTimeCodes);
   };
 
   return (
@@ -90,24 +80,24 @@ const ViewTimeCodes = () => {
     >
       <main id="main-content" style={{ width: "70%", margin: "auto" }}>
         <div className="my-time-codes-container">
-          {/* <Heading level={1} size="large" weight={700}> */}
           <h1>My Time Codes</h1>
-          {/* </Heading> */}
-          <TimeCodeProject
-            timeCode="19378847"
-            projectTitle="Fancy Project"
-            tag="In-Progress"
-          />
-          <TimeCodeProject
-            timeCode="39572956"
-            projectTitle="Classified"
-            tag="Not Started"
-          />
-          <TimeCodeProject
-            timeCode="82659301"
-            projectTitle="DevOps Magic"
-            tag="In-Progress"
-          />
+          <div className="time-code-project-container">
+            <TimeCodeProject
+              timeCode="19378847"
+              projectTitle="Fancy Project"
+              tag="In-Progress"
+            />
+            <TimeCodeProject
+              timeCode="39572956"
+              projectTitle="Classified"
+              tag="Not Started"
+            />
+            <TimeCodeProject
+              timeCode="82659301"
+              projectTitle="DevOps Magic"
+              tag="In-Progress"
+            />
+          </div>
           <div className="my-time-codes-item">
             <InputField
               label="Project Title"
@@ -116,17 +106,6 @@ const ViewTimeCodes = () => {
               placeholder="My Project"
               onChange={setProjectTitleValue}
             />
-            <Select
-              variant="default"
-              defaultValue="notStarted"
-              required={true}
-              style={{ height: "36px" }}
-              onChange={setStatusValue}
-            >
-              <Select.Option value="notStarted" display="Not Started" />
-              <Select.Option value="inProgress" display="In Progress" />
-              <Select.Option value="completed" display="Completed" />
-            </Select>
             <InputField
               label="Time Code"
               inputId="inputTimeCode"
@@ -134,39 +113,44 @@ const ViewTimeCodes = () => {
               placeholder="10203704"
               onChange={setTimeCodeValue}
             />
-            <Button
-              text="Add"
-              variant="action"
-              type="button"
-              onClick={() =>
-                fetch("http://localhost:8000/api/timecodes", {
-                  method: "POST",
-                  headers: {
-                    "Content-Type": "application/json",
-                  },
-                  body: JSON.stringify({
-                    id: inputTimeCodeValue,
-                    description: inputProjectTitleValue,
-                  }),
-                })
-                  .then((res) => {
-                    console.log(res);
+            <div className="add-project-button-container">
+              <Button
+                style={{ height: "min-content" }}
+                text="Add"
+                variant="action"
+                type="button"
+                isBlock
+                onClick={() =>
+                  fetch("http://localhost:8000/api/timecodes", {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                      id: inputTimeCodeValue,
+                      description: inputProjectTitleValue,
+                    }),
                   })
-                  .catch((err) => {
-                    console.log(err);
-                  })
-              }
-            />
+                    .then((res) => {
+                      console.log(res);
+                    })
+                    .catch((err) => {
+                      console.log(err);
+                    })
+                }
+              />
+            </div>
           </div>
         </div>
-        <CollapsibleMenuView.Toggle
-          isSelectable={true}
-          text="Show Completed Time Codes"
-          shouldCloseOnClick={true}
-          style={{ textAlign: "left" }}
-          onChange={handleRevealCompletedTimeCodesClick}
-        />
-        <RevealCompletedTimeCodes isVisible={inputRevealCompletedTimeCodes} />
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <Checkbox
+            labelText="Show Completed Time Codes"
+            onChange={handleRevealCompletedTimeCodesClick}
+            isInline={false}
+            style={{ textAlign: "left", marginBottom: "16px" }}
+          />
+          <RevealCompletedTimeCodes isVisible={inputRevealCompletedTimeCodes} />
+        </div>
       </main>
     </Card>
   );
