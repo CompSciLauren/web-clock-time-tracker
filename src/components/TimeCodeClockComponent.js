@@ -5,7 +5,14 @@ import Button from "terra-button/lib/Button";
 import InputField from "terra-form-input/lib/InputField";
 import Select from "terra-form-select";
 
+// import styles from './clock.css';
+// import classNames from 'classnames/bind';
+
+// mangle class names
+// const cx = classNames.bind(styles);
+
 const TimeCodeClockComponent = (props) => {
+  // vars
   const testDate = new Date();
 
   // state declarations
@@ -198,13 +205,13 @@ const TimeCodeClockComponent = (props) => {
         <h1>Time Code Tracker</h1>
 
         <form onSubmit={addTimeCode}>
+          <label>Create a New Time Code</label>
           <input type="submit" value="Submit" />
           <InputField
-            label="Create a New Time Code"
-            inputId="createNewTimeCode"
             type="number"
             min="0"
             placeholder="10203704"
+            value={candidateTimeCode}
             onChange={(e) => setCandidateTimeCode(e.target.value)}
           />
         </form>
@@ -264,28 +271,23 @@ const TimeCodeClockComponent = (props) => {
         <h2>Add New Entry</h2>
 
         <form onSubmit={handleSubmit}>
+          <label>Select Date to Add Time Log</label>
           <InputField
-            label="Select Date to Add Time Log"
-            inputId="selectDateForTimeLog"
             type="date"
-            required
+            required="true"
+            value={dateLog}
             onChange={(e) => setDateLog(e.target.value)}
           />
+          <label>Total time spent for selected Time Code</label>
           <InputField
-            label="Total time spent for selected Time Code"
-            inputId="timeSpentForTimeCode"
             type="number"
             min="0"
             step="0.01"
+            value={timeAddLog}
             onChange={(e) => setTimeAddLog(e.target.value)}
           />
 
-          <InputField
-            label="Submit"
-            inputId="timeCodeClockSubmit"
-            type="submit"
-            value="Submit"
-          />
+          <InputField type="submit" value="Submit" />
         </form>
       </main>
     </Card>
