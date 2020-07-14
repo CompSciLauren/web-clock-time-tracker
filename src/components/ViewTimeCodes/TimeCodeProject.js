@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Text from "terra-text";
 import Select from "terra-form-select";
 import Badge from "terra-badge";
 
@@ -12,7 +11,12 @@ const TimeCodeProject = (props) => {
 
   function CurrentStatus() {
     return !props.timeSpent ? (
-      <Select defaultValue={props.tag}>
+      <Select
+        variant="default"
+        defaultValue={props.tag}
+        required={true}
+        style={{ height: "36px" }}
+      >
         <Select.Option value="notStarted" display="Not Started" />
         <Select.Option value="inProgress" display="In Progress" />
         <Select.Option value="completed" display="Completed" />
@@ -24,9 +28,10 @@ const TimeCodeProject = (props) => {
 
   return (
     <div className="time-code-project">
-      <Text>{props.projectTitle}</Text>
+      <p>{props.projectTitle}</p>
       <CurrentStatus />
-      <Text>{props.timeCode}</Text>
+      <p>{props.timeCode}</p>
+      <p>{props.timeSpent}</p>
     </div>
   );
 };
