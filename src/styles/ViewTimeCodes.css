@@ -7,13 +7,26 @@
 
 .my-time-codes-item {
   display: grid;
-  grid-template-columns: auto auto auto auto;
+  grid-template-columns: repeat(3, 1fr);
   margin-top: 20px;
 }
 
+.time-code-project-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  grid-row-gap: 12px;
+}
+
 .time-code-project {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: min-content;
   text-align: left;
-  justify-content: space-between;
+  grid-column-gap: 24px;
+}
+
+.add-project-button-container {
+  display: flex;
+  align-items: center;
 }
