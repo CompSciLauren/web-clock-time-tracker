@@ -29,6 +29,14 @@ function App() {
                     Statistics
                   </a>
                 </li>
+                <li>
+                  <a
+                    className="remove-decoration"
+                    href="https://github.com/CompSciLauren/web-clock-time-tracker/issues/new/choose"
+                  >
+                    Log an Issue
+                  </a>
+                </li>
               </ul>
             </nav>
             <Route path="/" exact component={clock} />
