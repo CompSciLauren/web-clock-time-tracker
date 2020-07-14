@@ -2,10 +2,14 @@
 
 > A webapp that makes time tracking simple for associates.
 
-Find out precisely what time to clock out at the end of each day to get the hours you need. Easily track time spent on any time codes, and view the weekly summary to easily see what information you need to submit at the end of the week. 
+Find out precisely what time to clock out at the end of each day to get the hours you need. Easily track time spent on any time codes, and view the weekly summary to easily see what information you need to submit at the end of the week.
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 This project uses https://github.com/CompSciLauren/web-clock-time-tracker-backend for saving data.
+
+## Contributing
+
+Contributions are always welcome! Please see our [Contribution Guidelines](CONTRIBUTING.md).
 
 ## Available Scripts
 
