@@ -48,6 +48,20 @@ const ReminderAlarm = () => {
     return true;
   }
 
+  function createNotification() {
+    console.log("hi");
+    Notification.requestPermission(function (status) {
+      console.log(status);
+
+      // let img = "/to-do-notifications/img/icon-128.png";
+      let text = "Reminder set!";
+      new Notification("To do list", {
+        body: text,
+        // icon: img,
+      });
+    });
+  }
+
   return (
     <Card
       variant="raised"
@@ -59,6 +73,12 @@ const ReminderAlarm = () => {
           variant="action"
           text="Allow Notifications"
           onClick={handleRequestToAllowNotifications}
+          style={{ marginRight: "12px" }}
+        />
+        <Button
+          variant="action"
+          text="Create a Notification"
+          onClick={createNotification}
           style={{ marginRight: "12px" }}
         />
       </main>
