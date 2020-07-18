@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import clock from "./pages/clock/clock.js";
 import profile from "./pages/profile/profile.js";
 import statistics from "./pages/statistics/statistics.js";
+import login from "./pages/login/login.js";
 
 function App() {
   return (
@@ -30,6 +31,11 @@ function App() {
                   </a>
                 </li>
                 <li>
+                  <a className="remove-decoration" href="/login">
+                    Login
+                  </a>
+                </li>
+                <li>
                   <a
                     className="remove-decoration"
                     href="https://github.com/CompSciLauren/web-clock-time-tracker/issues/new/choose"
@@ -42,6 +48,7 @@ function App() {
             <Route path="/" exact component={clock} />
             <Route path="/profile" exact component={profile} />
             <Route path="/statistics" exact component={statistics} />
+            <Route path="/login" exact component={login} />
           </main>
         </Router>
       </div>
