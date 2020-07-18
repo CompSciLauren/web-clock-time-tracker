@@ -2,6 +2,7 @@ import React from "react";
 import Card from "terra-card";
 import InputField from "terra-form-input/lib/InputField";
 import Button from "terra-button/lib/Button";
+import NotificationBanner from "../../components/NotificationBanner.js";
 
 function login() {
   return (
@@ -10,6 +11,10 @@ function login() {
         variant="raised"
         style={{ marginBottom: "20px", paddingBottom: "16px" }}
       >
+        <NotificationBanner
+          type="error"
+          message="This feature is not fully functional on the website yet."
+        />
         <main id="main-content" style={{ width: "50%", margin: "auto" }}>
           <h1>Log in to your account</h1>
           {/* <form onSubmit={handleSubmit}> */}
