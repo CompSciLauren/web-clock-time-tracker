@@ -1,5 +1,5 @@
 import React from "react";
-import ReminderAlarmComponent from "../../components/ReminderAlarm/ReminderAlarmComponent";
+import ReminderAlarm from "../../components/ReminderAlarm/ReminderAlarm";
 import ClockComponent from "../../components/ClockComponent";
 import TimeCodeClockComponent from "../../components/TimeCodeClockComponent";
 import Error from "../../components/Error.js";
@@ -10,7 +10,7 @@ const ClockContainer = (props) => {
       <ClockComponent />
       <br />
       <Error message="This feature is not fully functional on the website yet." />
-      <ReminderAlarmComponent />
+      <ReminderAlarm />
       <br />
       <Error message="This feature is not fully functional on the website yet." />
       <TimeCodeClockComponent />
