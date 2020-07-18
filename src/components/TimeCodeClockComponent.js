@@ -4,6 +4,7 @@ import Card from "terra-card";
 import Button from "terra-button/lib/Button";
 import InputField from "terra-form-input/lib/InputField";
 import Select from "terra-form-select";
+import NotificationBanner from "../components/NotificationBanner.js";
 
 const TimeCodeClockComponent = (props) => {
   const testDate = new Date();
@@ -194,6 +195,10 @@ const TimeCodeClockComponent = (props) => {
       variant="raised"
       style={{ marginBottom: "20px", paddingBottom: "16px" }}
     >
+      <NotificationBanner
+        type="error"
+        message="This feature is not fully functional on the website yet."
+      />
       <main id="main-content" style={{ width: "50%", margin: "auto" }}>
         <h1>Time Code Tracker</h1>
 

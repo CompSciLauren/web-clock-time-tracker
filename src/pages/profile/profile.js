@@ -1,20 +1,24 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 import ViewTimeCodes from "../../components/ViewTimeCodes/ViewTimeCodes";
-import NotificationBanner from "../../components/NotificationBanner.js";
 import "./profile.css";
 
-function profile() {
+const Profile = () => {
+  const auth = useAuth();
+  console.log("auth:::::", auth);
+
+  if (!auth.isLoggedIn) {
+    return <Redirect to="/login" />;
+  }
+
   return (
     <div>
       <main id="main-content">
-        <NotificationBanner
-          type="error"
-          message="This feature is not fully functional on the website yet."
-        />
         <ViewTimeCodes />
       </main>
     </div>
   );
-}
+};
 
-export default profile;
+export default Profile;

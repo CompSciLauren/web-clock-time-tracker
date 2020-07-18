@@ -1,17 +1,20 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 import TimeCodeStatSummary from "../../components/TimeCodeStatSummary/TimeCodeStatSummary.js";
-import Error from "../../components/NotificationBanner.js";
 
-const statistics = () => {
+const Statistics = () => {
+  const auth = useAuth();
+
+  if (!auth.isLoggedIn) {
+    return <Redirect to="/login" />;
+  }
+
   return (
     <div>
-      <Error
-        type="error"
-        message="This feature is not fully functional on the website yet."
-      />
       <TimeCodeStatSummary />
     </div>
   );
 };
 
-export default statistics;
+export default Statistics;

@@ -4,6 +4,7 @@ import Checkbox from "terra-form-checkbox";
 import Card from "terra-card";
 import InputField from "terra-form-input/lib/InputField";
 import TimeCodeProject from "./TimeCodeProject";
+import NotificationBanner from "../../components/NotificationBanner.js";
 import "../../styles/ViewTimeCodes.css";
 
 function RevealCompletedTimeCodes(props) {
@@ -73,6 +74,10 @@ const ViewTimeCodes = () => {
       variant="raised"
       style={{ marginBottom: "20px", paddingBottom: "16px" }}
     >
+      <NotificationBanner
+        type="error"
+        message="This feature is not fully functional on the website yet."
+      />
       <main id="main-content" style={{ width: "70%", margin: "auto" }}>
         <div className="my-time-codes-container">
           <h1>My Time Codes</h1>

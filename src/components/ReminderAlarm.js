@@ -3,6 +3,7 @@ import Card from "terra-card";
 import Button from "terra-button/lib/Button";
 import TimeInput from "terra-time-input/lib/TimeInput";
 import TimeUtil from "terra-time-input/lib/TimeUtil";
+import NotificationBanner from "../components/NotificationBanner.js";
 
 const ReminderAlarm = () => {
   const [alarmTime, setAlarmTime] = useState("");
@@ -51,6 +52,10 @@ const ReminderAlarm = () => {
       variant="raised"
       style={{ marginBottom: "20px", paddingBottom: "16px" }}
     >
+      <NotificationBanner
+        type="warning"
+        message="This feature only works on mobile devices, and you must leave this specific page open in your browser. You will not be notified if you are on a desktop or anything else. You will not be notified if you close out the page or browser, or if you click on a different page of this website."
+      />
       <main id="main-content" style={{ width: "50%", margin: "auto" }}>
         <h1>Set a Reminder</h1>
         <TimeInput
