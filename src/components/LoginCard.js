@@ -9,6 +9,10 @@ const LoginCard = (props) => {
   const [password, setPassword] = useState("");
   const [showRegisterCard, setShowRegisterCard] = useState(false);
 
+  const [newUsername, setNewUsername] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [newConfirmPassword, setNewConfirmPassword] = useState("");
+
   function handleLogin() {
     console.log("Username:", username);
     console.log("Password:", password);
@@ -97,8 +101,8 @@ const LoginCard = (props) => {
               inputId="inputNewUsername"
               type="string"
               placeholder="myusername"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              value={newUsername}
+              onChange={(e) => setNewUsername(e.target.value)}
             />
 
             <br />
@@ -108,8 +112,8 @@ const LoginCard = (props) => {
               inputId="inputPassword"
               type="password"
               placeholder="mypassword"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
             />
 
             <InputField
@@ -117,8 +121,8 @@ const LoginCard = (props) => {
               inputId="inputConfirmPassword"
               type="password"
               placeholder="mypassword"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={newConfirmPassword}
+              onChange={(e) => setNewConfirmPassword(e.target.value)}
             />
 
             <br />
