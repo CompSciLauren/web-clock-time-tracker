@@ -1,18 +1,24 @@
 import React from "react";
-import ReminderAlarmComponent from "../../components/ReminderAlarm/ReminderAlarmComponent";
+import ReminderAlarm from "../../components/ReminderAlarm";
 import ClockComponent from "../../components/ClockComponent";
 import TimeCodeClockComponent from "../../components/TimeCodeClockComponent";
-import Error from "../../components/Error.js";
+import NotificationBanner from "../../components/NotificationBanner.js";
 
 const ClockContainer = (props) => {
   return (
     <div>
       <ClockComponent />
       <br />
-      <Error message="This feature is not fully functional on the website yet." />
-      <ReminderAlarmComponent />
+      <NotificationBanner
+        type="warning"
+        message="This feature only works on mobile devices. You will not be notified if you are on a desktop or anything else."
+      />
+      <ReminderAlarm />
       <br />
-      <Error message="This feature is not fully functional on the website yet." />
+      <NotificationBanner
+        type="error"
+        message="This feature is not fully functional on the website yet."
+      />
       <TimeCodeClockComponent />
     </div>
   );
