@@ -16,6 +16,12 @@ const LoginCard = () => {
   function handleLogin() {
     console.log("Username:", username);
     console.log("Password:", password);
+
+    if (username === "myusername" && password === "mypassword") {
+      console.log("Success!");
+    } else {
+      console.log("Login failed!");
+    }
   }
 
   const handleRegister = () => {
