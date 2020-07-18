@@ -24,6 +24,9 @@ const LoginCard = (props) => {
 
   const handleCreateMyAccount = () => {
     console.log("handleCreateMyAccount not implemented yet.");
+    console.log("New Username:", newUsername);
+    console.log("New Password:", newPassword);
+    console.log("New Password:", newConfirmPassword);
   };
 
   function RevealLoginCard(props) {
