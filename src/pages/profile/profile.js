@@ -6,6 +6,7 @@ import "./profile.css";
 
 const Profile = () => {
   const auth = useAuth();
+  console.log("auth:::::", auth);
 
   if (!auth.isLoggedIn) {
     return <Redirect to="/login" />;

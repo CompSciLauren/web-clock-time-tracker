@@ -24,7 +24,7 @@ export default App;
 
 const Navigation = () => {
   const auth = useAuth();
-  console.log(auth);
+  console.log("auth:", auth);
 
   return (
     <Router>
@@ -56,7 +56,11 @@ const Navigation = () => {
                   Login
                 </a>
               ) : (
-                <a className="remove-decoration" href="/login">
+                <a
+                  className="remove-decoration"
+                  onClick={auth.logout}
+                  href="/login"
+                >
                   Logout
                 </a>
               )}
