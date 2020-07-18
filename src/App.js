@@ -2,7 +2,7 @@ import React from "react";
 import useAuth, { AuthProvider } from "./hooks/useAuth";
 import Base from "terra-base";
 import "./App.css";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { NavLink, BrowserRouter as Router, Route } from "react-router-dom";
 import clock from "./pages/clock/clock.js";
 import profile from "./pages/profile/profile.js";
 import statistics from "./pages/statistics/statistics.js";
@@ -32,37 +32,37 @@ const Navigation = () => {
         <nav>
           <ul>
             <li>
-              <a className="remove-decoration" href="/">
+              <NavLink className="remove-decoration" to="/">
                 Clock
-              </a>
+              </NavLink>
             </li>
             {auth.isLoggedIn && (
               <li>
-                <a className="remove-decoration" href="/profile">
+                <NavLink className="remove-decoration" to="/profile">
                   Profile
-                </a>
+                </NavLink>
               </li>
             )}
             {auth.isLoggedIn && (
               <li>
-                <a className="remove-decoration" href="/statistics">
+                <NavLink className="remove-decoration" to="/statistics">
                   Statistics
-                </a>
+                </NavLink>
               </li>
             )}
             <li>
               {!auth.isLoggedIn ? (
-                <a className="remove-decoration" href="/login">
+                <NavLink className="remove-decoration" to="/login">
                   Login
-                </a>
+                </NavLink>
               ) : (
-                <a
+                <NavLink
                   className="remove-decoration"
                   onClick={auth.logout}
-                  href="/login"
+                  to="/login"
                 >
                   Logout
-                </a>
+                </NavLink>
               )}
             </li>
             <li>
