@@ -7,14 +7,27 @@ import NotificationBanner from "../components/NotificationBanner.js";
 const LoginCard = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [showRegisterCard, setShowRegisterCard] = useState(false);
 
   function handleLogin() {
     console.log("Username:", username);
     console.log("Password:", password);
   }
 
-  function handleRegister() {
-    console.log("Register button not implemented yet.");
+  const handleRegister = () => {
+    setShowRegisterCard(!showRegisterCard);
+  };
+
+  function RevealRegisterCard(props) {
+    if (!props.isVisible) {
+      return null;
+    }
+
+    return (
+      <Card>
+        <h1>Register a new account</h1>
+      </Card>
+    );
   }
 
   return (
@@ -61,6 +74,7 @@ const LoginCard = (props) => {
               style={{ marginLeft: "12px" }}
             />
           </form>
+          <RevealRegisterCard isVisible={showRegisterCard} />
         </main>
       </Card>
     </div>
