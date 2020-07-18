@@ -29,7 +29,6 @@ const LoginCard = (props) => {
         />
         <main id="main-content" style={{ width: "50%", margin: "auto" }}>
           <h1>Log in to your account</h1>
-          {/* <form onSubmit={handleSubmit}> */}
           <form>
             <InputField
               label="Username"
