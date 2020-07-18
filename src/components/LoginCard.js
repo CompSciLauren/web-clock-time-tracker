@@ -57,7 +57,7 @@ const LoginCard = () => {
         >
           <NotificationBanner
             type="error"
-            message="This feature is not fully functional on the website yet."
+            message="This feature is not fully functional on the website yet. You can click login without typing credentials to access the pages that require a user account."
           />
           <main id="main-content" style={{ width: "50%", margin: "auto" }}>
             <h1>Log in to your account</h1>
