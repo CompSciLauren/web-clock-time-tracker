@@ -1,7 +1,15 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 import TimeCodeStatSummary from "../../components/TimeCodeStatSummary/TimeCodeStatSummary.js";
 
-const statistics = () => {
+const Statistics = () => {
+  const auth = useAuth();
+
+  if (!auth.isLoggedIn) {
+    return <Redirect to="/login" />;
+  }
+
   return (
     <div>
       <TimeCodeStatSummary />
@@ -9,4 +17,4 @@ const statistics = () => {
   );
 };
 
-export default statistics;
+export default Statistics;
