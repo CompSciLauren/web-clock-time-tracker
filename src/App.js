@@ -20,20 +20,30 @@ function App() {
                     Clock
                   </a>
                 </li>
+                {3 > 2 && (
+                  <li>
+                    <a className="remove-decoration" href="/profile">
+                      Profile
+                    </a>
+                  </li>
+                )}
+                {3 > 2 && (
+                  <li>
+                    <a className="remove-decoration" href="/statistics">
+                      Statistics
+                    </a>
+                  </li>
+                )}
                 <li>
-                  <a className="remove-decoration" href="/profile">
-                    Profile
-                  </a>
-                </li>
-                <li>
-                  <a className="remove-decoration" href="/statistics">
-                    Statistics
-                  </a>
-                </li>
-                <li>
-                  <a className="remove-decoration" href="/login">
-                    Login
-                  </a>
+                  {3 > 2 ? (
+                    <a className="remove-decoration" href="/login">
+                      Login
+                    </a>
+                  ) : (
+                    <a className="remove-decoration" href="/login">
+                      Logout
+                    </a>
+                  )}
                 </li>
                 <li>
                   <a

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
 import Card from "terra-card";
 import InputField from "terra-form-input/lib/InputField";
 import Button from "terra-button/lib/Button";
@@ -13,14 +14,19 @@ const LoginCard = () => {
   const [newPassword, setNewPassword] = useState("");
   const [newConfirmPassword, setNewConfirmPassword] = useState("");
 
+  const [
+    shouldRedirectForSuccessfulLogin,
+    setShouldRedirectForSuccessfulLogin,
+  ] = useState(false);
+
   function handleLogin() {
     console.log("Username:", username);
     console.log("Password:", password);
 
     if (username === "myusername" && password === "mypassword") {
-      console.log("Success!");
+      setShouldRedirectForSuccessfulLogin(true);
     } else {
-      console.log("Login failed!");
+      alert("Incorrect username or password");
     }
   }
 
@@ -34,6 +40,10 @@ const LoginCard = () => {
     console.log("New Password:", newPassword);
     console.log("New Password:", newConfirmPassword);
   };
+
+  if (shouldRedirectForSuccessfulLogin) {
+    return <Redirect to="/profile" />;
+  }
 
   return (
     <>
