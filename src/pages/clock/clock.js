@@ -11,7 +11,7 @@ const ClockContainer = (props) => {
       <br />
       <NotificationBanner
         type="warning"
-        message="This feature only works on mobile devices. You will not be notified if you are on a desktop or anything else."
+        message="This feature only works on mobile devices, and you must leave this specific page open in your browser. You will not be notified if you are on a desktop or anything else. You will not be notified if you close out the page or browser, or if you click on a different page of this website."
       />
       <ReminderAlarm />
       <br />
