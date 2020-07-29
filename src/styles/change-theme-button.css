@@ -1,0 +1,14 @@
+.change-theme {
+  text-decoration: none;
+  display: block;
+  float: right;
+  padding: calc(2px + 0.6vw) calc(4px + 0.6vw);
+  padding-right: 2rem;
+  font-size: calc(16px + 0.2vw);
+  color: #f1f5f8;
+  background-color: #014979;
+}
+
+a:hover {
+  background-color: #013152;
+}

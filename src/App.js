@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useState } from 'react';
 import Base from "terra-base";
-import "./App.css";
+import "./App-dark-theme.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import clock from "./pages/clock/clock.js";
 import profile from "./pages/profile/profile.js";
 import statistics from "./pages/statistics/statistics.js";
+import ChangeThemeComponent from "./components/ChangeThemeComponent.js";
+
+//dynamically import theme from themeConfig.js
+import getConfig from './themeConfig.js';
+var styles = require('./' + getConfig(1) + '.css');
+
+
+//change app theme
+const handleChangeTheme = () => {
+  console.log('Callback worked.');
+
+
+};
 
 function App() {
   return (
@@ -36,6 +49,11 @@ function App() {
                   >
                     Log an Issue
                   </a>
+                </li>
+                  <ChangeThemeComponent 
+                    handleChangeTheme={handleChangeTheme}
+                  />
+                <li>
                 </li>
               </ul>
             </nav>
